@@ -150,9 +150,13 @@
     'reg-pass-label':   { es: 'Contraseña',           en: 'Password' },
     'reg-pass-ph':      { es: 'Mínimo 8 caracteres', en: 'At least 8 characters' },
     'reg-btn':          { es: 'Crear cuenta',         en: 'Create account' },
-    'reg-have-account': { es: '¿Ya tienes cuenta?',  en: 'Already have an account?' },
-    'reg-login':        { es: 'Inicia sesión',        en: 'Sign in' },
-    'reg-back':         { es: '← Volver al inicio',  en: '← Back to home' },
+    'reg-have-account':   { es: '¿Ya tienes cuenta?',  en: 'Already have an account?' },
+    'reg-login':          { es: 'Inicia sesión',        en: 'Sign in' },
+    'reg-back':           { es: '← Volver al inicio',  en: '← Back to home' },
+    'reg-currency-label': { es: 'Moneda principal',     en: 'Primary currency' },
+
+    /* ── LOGIN extra ── */
+    'login-registered-msg': { es: 'Cuenta creada. Por favor inicia sesión.', en: 'Account created. Please sign in.' },
   };
 
   function getLang() {

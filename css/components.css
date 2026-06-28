@@ -73,6 +73,7 @@
 .band-dark::after { content: ""; position: absolute; inset: 0; background: radial-gradient(40% 60% at 85% 20%, rgba(159,232,112,.18), transparent 70%); pointer-events: none; }
 .band-dark h2 { color: #fff; }
 .band-dark .accent { color: var(--bright); }
+.accent { color: var(--gold); }
 .band-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--sp-7); align-items: center; position: relative; z-index: 1; }
 .assurances { display: grid; gap: var(--sp-3); }
 .assurance { display: flex; gap: var(--sp-3); align-items: flex-start; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); border-radius: var(--r-md); padding: var(--sp-4); }
