@@ -16,7 +16,7 @@ test('non-admin cannot list users', async () => {
     const a = api(base);
     const u = await makeUser(a, 'n@x.co');
     const tok = (await (await a.post('/api/auth/login', { email: 'n@x.co', password: 'secret12' })).json()).token;
-    assert.equal((await a.get('/api/admin/users', tok)).status, 401);
+    assert.equal((await a.get('/api/admin/users', tok)).status, 403);
   });
 });
 test('admin credits a user balance', async () => {

@@ -25,6 +25,15 @@ test('profile returns balance and currency', async () => {
     assert.equal(body.currency, 'NGN');
   });
 });
+test('blocked user gets 403 on profile', async () => {
+  await withApp(async ({ base, deps }) => {
+    const a = api(base);
+    const { token, user } = await registerLogin(a, 'blocked@x.co');
+    deps.helpers.setBlocked(user.id, true);
+    const res = await a.get('/api/user/profile', token);
+    assert.equal(res.status, 403);
+  });
+});
 test('change password works and old password fails afterward', async () => {
   await withApp(async ({ base }) => {
     const a = api(base);

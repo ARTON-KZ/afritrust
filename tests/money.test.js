@@ -21,6 +21,10 @@ test('toMinor parses and rounds to cents', () => {
   assert.equal(m.toMinor(-5).ok, false);
   assert.equal(m.toMinor(0).ok, false);
 });
+test('toMinor rejects sub-cent amounts that round to zero', () => {
+  assert.equal(m.toMinor('0.001').ok, false);
+  assert.equal(m.toMinor('0.004').ok, false);
+});
 test('fromMinor and formatMoney', () => {
   assert.equal(m.fromMinor(1050), 10.5);
   // 125000 minor units = 1,250.00 major

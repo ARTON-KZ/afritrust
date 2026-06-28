@@ -3,3 +3,5 @@
 window.API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:3002'
   : 'https://afritrust-production.up.railway.app';
+
+window.AFRITRUST_TELEGRAM = 'https://t.me/AfriTrustSupport'; // TODO: replace with the real admin Telegram

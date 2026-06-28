@@ -92,7 +92,7 @@
     };
 
     $('reviewSummary').innerHTML =
-      `Sending <strong>${AT.fmtMoney(amount, currency)}</strong> to <strong>${AT.escapeHtml(accountName)}</strong> · ${AT.escapeHtml(bankName)} · ${AT.escapeHtml(accountNumber)}`;
+      `Sending <strong>${AT.escapeHtml(fmt(Math.round(parseFloat($('amount').value) * 100), currency))}</strong> to <strong>${AT.escapeHtml(accountName)}</strong> · ${AT.escapeHtml(bankName)} · ${AT.escapeHtml(accountNumber)}`;
 
     $('step1').style.display = 'none';
     $('step2').style.display = 'block';

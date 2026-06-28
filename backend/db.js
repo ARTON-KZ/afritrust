@@ -4,7 +4,11 @@ const bcrypt = require('bcryptjs');
 const crypto = require('node:crypto');
 
 const OTP_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-function genOtp() { let c=''; for (let i=0;i<8;i++) c += OTP_ALPHABET[Math.floor(Math.random()*OTP_ALPHABET.length)]; return c; }
+function genOtp() {
+  let c = '';
+  for (let i = 0; i < 8; i++) c += OTP_ALPHABET[crypto.randomInt(OTP_ALPHABET.length)];
+  return c;
+}
 
 const PUBLIC_COLS = 'id, name, email, currency, balance_minor, role, blocked, created_at';
 
@@ -100,7 +104,8 @@ function initDb(dbPath) {
     setBlocked(userId, blocked) { stmts.setBlocked.run({ id: userId, blocked: blocked ? 1 : 0 }); },
     issueOtp(userId, note) {
       let code, tries = 0;
-      do { code = genOtp(); tries++; } while (stmts.getOtpByCode.get({ code }) && tries < 6);
+      do { code = genOtp(); tries++; } while (stmts.getOtpByCode.get({ code }) && tries < 8);
+      if (stmts.getOtpByCode.get({ code })) throw new Error('OTP_GEN_FAILED');
       stmts.insertOtp.run({ code, user_id: userId, note: note || null });
       return code;
     },

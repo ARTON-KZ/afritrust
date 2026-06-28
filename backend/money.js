@@ -11,6 +11,7 @@ function toMinor(major) {
   const n = Number(major);
   if (!Number.isFinite(n) || n <= 0) return { ok: false, error: 'Enter a valid amount.' };
   const minor = Math.round(n * 100);
+  if (minor <= 0) return { ok: false, error: 'Enter a valid amount.' };
   if (!Number.isSafeInteger(minor)) return { ok: false, error: 'Amount is too large.' };
   return { ok: true, minor };
 }

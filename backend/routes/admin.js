@@ -11,6 +11,7 @@ function adjust(kind) {
   return (req, res) => {
     const { stmts, helpers } = req.app.locals;
     const id = parseInt(req.params.id, 10);
+    if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ error: 'Invalid id.' });
     const u = stmts.getUserById.get({ id });
     if (!u) return res.status(404).json({ error: 'User not found.' });
     const amt = toMinor(req.body?.amount);
@@ -31,6 +32,7 @@ router.post('/users/:id/debit', adjust('debit'));
 router.post('/users/:id/block', (req, res) => {
   const { stmts, helpers } = req.app.locals;
   const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ error: 'Invalid id.' });
   if (!stmts.getUserById.get({ id })) return res.status(404).json({ error: 'User not found.' });
   helpers.setBlocked(id, !!req.body?.blocked);
   res.json({ ok: true });
@@ -53,6 +55,7 @@ function resolve(kind) {
   return (req, res) => {
     const { helpers } = req.app.locals;
     const id = parseInt(req.params.id, 10);
+    if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ error: 'Invalid id.' });
     try {
       if (kind === 'paid') helpers.markWithdrawalPaid(id, req.body?.admin_note);
       else helpers.rejectWithdrawal(id, req.body?.admin_note);

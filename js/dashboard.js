@@ -6,7 +6,7 @@
   const auth = { 'Authorization': 'Bearer ' + token };
   const fmt = (minor, cur) => { try { return new Intl.NumberFormat('en',{style:'currency',currency:cur,currencyDisplay:'narrowSymbol'}).format(minor/100); } catch { return (minor/100).toFixed(2)+' '+cur; } };
 
-  const FLAGS = { NGN: '🇳🇬', GHS: '🇬🇭', KES: '🇰🇪', ZAR: '🇿🇦', UGX: '🇺🇬', TZS: '🇹🇿', ETB: '🇪🇹', XOF: '🌍', USD: '🇺🇸', EUR: '🇪🇺', GBP: '🇬🇧' };
+  const FLAGS = { NGN: '🇳🇬', GHS: '🇬🇭', KES: '🇰🇪', ZAR: '🇿🇦', UGX: '🇺🇬', TZS: '🇹🇿', ETB: '🇪🇹', XOF: '🌍', USD: '🇺🇸', EUR: '🇪🇺', GBP: '🇬🇧', MXN: '🇲🇽', ARS: '🇦🇷', CLP: '🇨🇱', COP: '🇨🇴', PEN: '🇵🇪', BOB: '🇧🇴', PYG: '🇵🇾', VES: '🇻🇪' };
 
   // Small helper: escape text before inserting into innerHTML
   function esc(s) {

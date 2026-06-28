@@ -17,13 +17,6 @@ window.AT = (function () {
     return data;
   }
 
-  // Admin token storage
-  const admin = {
-    get: () => localStorage.getItem('aft_admin_token'),
-    set: (t) => localStorage.setItem('aft_admin_token', t),
-    clear: () => localStorage.removeItem('aft_admin_token'),
-  };
-
   function fmtMoney(amount, currency = 'USD') {
     const n = Number(amount) || 0;
     const symbols = { NGN: '₦', USD: '$', GHS: 'GH₵', KES: 'KSh', ZAR: 'R', GBP: '£', EUR: '€', MXN: 'MX$' };
@@ -102,5 +95,5 @@ window.AT = (function () {
     if (saved) el.value = saved; // restore if still valid
   }
 
-  return { API, api, admin, fmtMoney, toast, escapeHtml, CURRENCIES, ACCOUNT_TYPES, COUNTRIES, ACCOUNT_TYPES_I18N, COUNTRIES_I18N, populateSelect };
+  return { API, api, fmtMoney, toast, escapeHtml, CURRENCIES, ACCOUNT_TYPES, COUNTRIES, ACCOUNT_TYPES_I18N, COUNTRIES_I18N, populateSelect };
 })();

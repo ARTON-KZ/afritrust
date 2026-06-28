@@ -10,12 +10,15 @@ function decode(req) {
 function requireUser(req, res, next) {
   const p = decode(req);
   if (!p) return res.status(401).json({ error: 'Please sign in to continue.' });
+  const u = req.app?.locals?.stmts?.getUserById?.get({ id: p.id });
+  if (u && u.blocked) return res.status(403).json({ error: 'Your account has been suspended.' });
   req.user = { id: p.id, role: p.role };
   next();
 }
 function requireAdmin(req, res, next) {
   const p = decode(req);
-  if (!p || p.role !== 'admin') return res.status(401).json({ error: 'Admin access required.' });
+  if (!p) return res.status(401).json({ error: 'Authentication required.' });
+  if (p.role !== 'admin') return res.status(403).json({ error: 'Admin access required.' });
   req.user = { id: p.id, role: p.role };
   next();
 }
