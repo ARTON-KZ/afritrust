@@ -48,4 +48,23 @@ router.delete('/otps/:id', (req, res) => {
   res.json({ ok: true });
 });
 
+router.get('/withdrawals', (req, res) => res.json(req.app.locals.stmts.getAllWithdrawals.all()));
+function resolve(kind) {
+  return (req, res) => {
+    const { helpers } = req.app.locals;
+    const id = parseInt(req.params.id, 10);
+    try {
+      if (kind === 'paid') helpers.markWithdrawalPaid(id, req.body?.admin_note);
+      else helpers.rejectWithdrawal(id, req.body?.admin_note);
+    } catch (e) {
+      if (e.message === 'NO_WITHDRAWAL') return res.status(404).json({ error: 'Request not found.' });
+      if (e.message === 'NOT_PENDING') return res.status(409).json({ error: 'Request is already resolved.' });
+      throw e;
+    }
+    res.json({ ok: true });
+  };
+}
+router.post('/withdrawals/:id/paid', resolve('paid'));
+router.post('/withdrawals/:id/reject', resolve('reject'));
+
 module.exports = router;
