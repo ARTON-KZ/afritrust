@@ -25,6 +25,7 @@ function createApp(deps) {
   app.use('/api/auth/login', authLimiter);
   app.use('/api/auth', require('./routes/auth'));
 
+  app.use('/api/user/withdraw', rateLimit({ windowMs: 15 * 60 * 1000, max: 20 }));
   app.use('/api/user', require('./routes/user'));
 
   app.use('/api/admin', require('./routes/admin'));
