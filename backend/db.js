@@ -1,6 +1,7 @@
 const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const crypto = require('node:crypto');
 
 const OTP_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 function genOtp() { let c=''; for (let i=0;i<8;i++) c += OTP_ALPHABET[Math.floor(Math.random()*OTP_ALPHABET.length)]; return c; }
@@ -59,6 +60,14 @@ function initDb(dbPath) {
     markOtpUsed: db.prepare(`UPDATE otps SET status='used', used_at=datetime('now') WHERE id=@id`),
     getAllOtps: db.prepare(`SELECT o.*, u.email AS user_email, u.name AS user_name FROM otps o JOIN users u ON u.id=o.user_id ORDER BY o.created_at DESC`),
     deleteOtp: db.prepare(`DELETE FROM otps WHERE id=@id`),
+    insertWithdrawal: db.prepare(`INSERT INTO withdrawals
+  (reference,user_id,amount_minor,currency,beneficiary_bank_name,beneficiary_account_name,beneficiary_account_number,beneficiary_account_type,beneficiary_bank_country,routine_bank_code,otp_code)
+  VALUES (@reference,@user_id,@amount_minor,@currency,@bank_name,@account_name,@account_number,@account_type,@bank_country,@routine_bank_code,@otp_code)`),
+    getWithdrawalById: db.prepare(`SELECT * FROM withdrawals WHERE id=@id`),
+    getAllWithdrawals: db.prepare(`SELECT w.*, u.name AS user_name, u.email AS user_email FROM withdrawals w JOIN users u ON u.id=w.user_id ORDER BY w.created_at DESC`),
+    linkWithdrawalTxn: db.prepare(`UPDATE withdrawals SET transaction_id=@txn WHERE id=@id`),
+    setWithdrawalStatus: db.prepare(`UPDATE withdrawals SET status=@status, admin_note=@admin_note, updated_at=datetime('now'), paid_at=CASE WHEN @status='paid' THEN datetime('now') ELSE paid_at END WHERE id=@id`),
+    setTxnStatus: db.prepare(`UPDATE transactions SET status=@status WHERE id=@id`),
   };
 
   function tx(fn) {
@@ -94,6 +103,47 @@ function initDb(dbPath) {
       do { code = genOtp(); tries++; } while (stmts.getOtpByCode.get({ code }) && tries < 6);
       stmts.insertOtp.run({ code, user_id: userId, note: note || null });
       return code;
+    },
+    createWithdrawal(userId, { amountMinor, otpCode, bank }) {
+      return tx(() => {
+        const u = stmts.getUserByIdFull.get({ id: userId });
+        if (!u) throw new Error('NO_USER');
+        const code = String(otpCode || '').trim().toUpperCase();
+        const otp = stmts.getActiveOtpForUser.get({ code, user_id: userId });
+        if (!otp) throw new Error('INVALID_OTP');
+        if (u.balance_minor < amountMinor) throw new Error('INSUFFICIENT');
+        stmts.markOtpUsed.run({ id: otp.id });
+        stmts.addBalance.run({ id: userId, delta: -amountMinor });
+        const reference = 'AFT-' + crypto.randomBytes(4).toString('hex').toUpperCase();
+        const txn = stmts.insertTxn.run({ user_id: userId, type: 'withdrawal', amount_minor: amountMinor, currency: u.currency, status: 'pending', reference, note: null });
+        const w = stmts.insertWithdrawal.run({
+          reference, user_id: userId, amount_minor: amountMinor, currency: u.currency,
+          bank_name: bank.bank_name, account_name: bank.account_name, account_number: bank.account_number,
+          account_type: bank.account_type || null, bank_country: bank.bank_country || null,
+          routine_bank_code: bank.routine_bank_code || null, otp_code: code,
+        });
+        stmts.linkWithdrawalTxn.run({ id: w.lastInsertRowid, txn: txn.lastInsertRowid });
+        return { reference };
+      });
+    },
+    markWithdrawalPaid(id, adminNote) {
+      return tx(() => {
+        const w = stmts.getWithdrawalById.get({ id });
+        if (!w) throw new Error('NO_WITHDRAWAL');
+        if (w.status !== 'pending') throw new Error('NOT_PENDING');
+        stmts.setWithdrawalStatus.run({ id, status: 'paid', admin_note: adminNote || w.admin_note || null });
+        if (w.transaction_id) stmts.setTxnStatus.run({ id: w.transaction_id, status: 'completed' });
+      });
+    },
+    rejectWithdrawal(id, adminNote) {
+      return tx(() => {
+        const w = stmts.getWithdrawalById.get({ id });
+        if (!w) throw new Error('NO_WITHDRAWAL');
+        if (w.status !== 'pending') throw new Error('NOT_PENDING');
+        stmts.addBalance.run({ id: w.user_id, delta: w.amount_minor }); // refund the hold
+        stmts.setWithdrawalStatus.run({ id, status: 'rejected', admin_note: adminNote || w.admin_note || null });
+        if (w.transaction_id) stmts.setTxnStatus.run({ id: w.transaction_id, status: 'failed' });
+      });
     },
   };
 
