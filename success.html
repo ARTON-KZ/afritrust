@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Request received — AfriTrust</title>
+  <title>Solicitud recibida — AfriTrust</title>
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,10 @@
         <span class="mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
         AfriTrust
       </a>
-      <nav class="nav-cta"><a href="index.html" class="link-arrow">← Back to home</a></nav>
+      <nav class="nav-cta">
+        <a href="index.html" class="link-arrow">← Back to home</a>
+        <button id="langToggle" class="btn btn-ghost btn-sm" style="margin-left:8px">English</button>
+      </nav>
     </div>
   </header>
 
@@ -28,21 +31,35 @@
         <div class="success-icon" aria-hidden="true">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
-        <h1>Request received</h1>
-        <p class="muted" style="margin-top:12px; max-width:42ch; margin-inline:auto">Your withdrawal is verified and with our payout team. We'll transfer the money to your bank — most payouts arrive within 24 hours.</p>
+        <h1 data-i18n="success-title">Solicitud recibida</h1>
+        <p class="muted" style="margin-top:12px; max-width:42ch; margin-inline:auto" data-i18n="success-body">Tu retiro está verificado y en manos de nuestro equipo de pagos. Transferiremos el dinero a tu banco — la mayoría de los pagos llegan en menos de 24 horas.</p>
         <div><span class="ref-pill" id="ref">—</span></div>
         <div style="margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
-          <a href="index.html" class="btn btn-primary">Back to home</a>
-          <a href="withdraw.html" class="btn btn-ghost">Make another request</a>
+          <a href="index.html" class="btn btn-primary" data-i18n="success-btn-home">Volver al inicio</a>
+          <a href="withdraw.html" class="btn btn-ghost" data-i18n="success-btn-another">Hacer otra solicitud</a>
         </div>
       </div>
     </div>
   </main>
 
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script>
     (function () {
       const ref = new URLSearchParams(location.search).get('ref');
-      document.getElementById('ref').textContent = ref ? 'Reference: ' + ref : 'Reference unavailable';
+      const lang = localStorage.getItem('afritrust_lang') || 'es';
+      const T = window.afriI18n;
+      const prefix = T ? T.t('success-ref-prefix') : (lang === 'es' ? 'Referencia: ' : 'Reference: ');
+      const unavail = T ? T.t('success-ref-unavail') : (lang === 'es' ? 'Referencia no disponible' : 'Reference unavailable');
+      document.getElementById('ref').textContent = ref ? prefix + ref : unavail;
+
+      // Re-render ref label on language toggle
+      document.addEventListener('afri:langchange', function (e) {
+        const l = e.detail.lang;
+        const p2 = T ? T.t('success-ref-prefix') : (l === 'es' ? 'Referencia: ' : 'Reference: ');
+        const u2 = T ? T.t('success-ref-unavail') : (l === 'es' ? 'Referencia no disponible' : 'Reference unavailable');
+        document.getElementById('ref').textContent = ref ? p2 + ref : u2;
+      });
     })();
   </script>
 </body>

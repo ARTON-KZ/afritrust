@@ -26,9 +26,15 @@
   let details = null;
   let userCurrency = 'NGN'; // will be overwritten by profile fetch
 
-  // ── Populate static dropdowns ─────────────────────────────────────────────
-  $('accountType').innerHTML = AT.ACCOUNT_TYPES.map((t) => `<option>${t}</option>`).join('');
-  $('bankCountry').innerHTML = AT.COUNTRIES.map((c) => `<option>${AT.escapeHtml(c)}</option>`).join('');
+  // ── Populate static dropdowns (localized) ────────────────────────────────
+  function repopulateDropdowns() {
+    const lang = (window.afriI18n && window.afriI18n.getLang()) || 'es';
+    AT.populateSelect($('accountType'), AT.ACCOUNT_TYPES_I18N, lang);
+    AT.populateSelect($('bankCountry'), AT.COUNTRIES_I18N, lang);
+  }
+  repopulateDropdowns();
+  // Re-populate when language changes
+  document.addEventListener('afri:langchange', repopulateDropdowns);
   $('tgLink').href = window.AFRITRUST_TELEGRAM || 'https://t.me/';
 
   // ── Load profile: set currency + balance ─────────────────────────────────
@@ -120,7 +126,8 @@
       window.location.href = 'success.html?ref=' + encodeURIComponent(res.reference);
     } catch (err) {
       showError(err.message);           // err.message from AT.api — safe text
-      btn.disabled = false; btn.textContent = 'Submit withdrawal request';
+      btn.disabled = false;
+      btn.textContent = (window.afriI18n && window.afriI18n.t('wd-btn-submit')) || 'Submit withdrawal request';
     }
   });
 })();

@@ -76,8 +76,8 @@
     'faq-title':   { es: 'Bueno saber',  en: 'Good to know' },
     'faq1-q': { es: '¿Alguna vez pago dinero en AfriTrust?',  en: 'Do I ever pay money on AfriTrust?' },
     'faq1-a': { es: 'No. AfriTrust solo envía dinero. Ingresas la cuenta bancaria a la que quieres que te paguen — nunca recopilamos datos de tarjeta ni cobramos pagos.', en: 'No. AfriTrust only sends money out. You enter the bank account you want paid — we never collect card details or take payment.' },
-    'faq2-q': { es: '¿Necesito crear una cuenta?',            en: 'Do I need to create an account?' },
-    'faq2-a': { es: 'No hace falta registrarse. Solo completa el formulario de retiro y confirma con el código de tu administrador de Telegram.', en: 'No sign-up needed. Just fill in the withdrawal form and confirm with the code from your Telegram admin.' },
+    'faq2-q': { es: '¿Necesito registrarme?',                  en: 'Do I need to register?' },
+    'faq2-a': { es: 'Sí. Crea una cuenta gratuita para ver tu saldo y solicitar retiros. Tu administrador de Telegram acredita tu saldo y te envía un código de confirmación para cada retiro.', en: 'Yes. Create a free account to see your balance and request payouts. Your Telegram admin credits your balance and sends you a confirmation code for each withdrawal.' },
     'faq3-q': { es: '¿Qué es el código de confirmación?',     en: 'What is the confirmation code?' },
     'faq3-a': { es: 'Un código de un solo uso que te envía el administrador de tu comunidad de Telegram. Confirma que eres un miembro genuino antes de que tu solicitud llegue a nuestro equipo de pagos. No es un código de tu banco.', en: 'A single-use code your Telegram community admin sends you. It confirms you\'re a genuine member before your request reaches our payout team. It is not a code from your bank.' },
     'faq4-q': { es: '¿Cuánto tiempo tarda un pago?',          en: 'How long does a payout take?' },
@@ -100,27 +100,64 @@
     'footer-col-support':   { es: 'Soporte',           en: 'Support' },
     'footer-contact':       { es: 'Contactar admin',   en: 'Contact admin' },
     'footer-admin':         { es: 'Administrador',     en: 'Admin' },
-    'footer-copy':          { es: '© AfriTrust. Todos los derechos reservados.', en: '© AfriTrust. All rights reserved.' },
+    'footer-copy':          { es: '© 2026 AfriTrust. Todos los derechos reservados.', en: '© 2026 AfriTrust. All rights reserved.' },
     'footer-made-for':      { es: 'Hecho para comunidades de toda África.', en: 'Made for communities across Africa.' },
 
-    /* ── WITHDRAW PAGE (placeholder — built in C2) ── */
+    /* ── WITHDRAW PAGE ── */
     'wd-title': {
       es: 'SOLICITAR <span class="accent">RETIRO</span>',
       en: 'REQUEST A <span class="accent">WITHDRAWAL</span>',
     },
-    'wd-sub':            { es: 'Completa el formulario a continuación. Tu pago llegará dentro de 24 horas.', en: 'Complete the form below. Your payout arrives within 24 hours.' },
-    'wd-name-label':     { es: 'Nombre del titular',     en: 'Account name' },
-    'wd-name-ph':        { es: 'Nombre completo',        en: 'Full name' },
-    'wd-number-label':   { es: 'Número de cuenta',       en: 'Account number' },
-    'wd-number-ph':      { es: 'Número de cuenta',       en: 'Account number' },
-    'wd-bank-label':     { es: 'Banco',                  en: 'Bank' },
-    'wd-bank-ph':        { es: 'Selecciona tu banco…',   en: 'Select your bank…' },
-    'wd-amount-label':   { es: 'Monto (₦)',              en: 'Amount (₦)' },
-    'wd-amount-ph':      { es: 'ej. 50000',              en: 'e.g. 50000' },
-    'wd-code-label':     { es: 'Código de confirmación', en: 'Confirmation code' },
-    'wd-code-ph':        { es: 'Código de tu admin',     en: 'Code from your admin' },
-    'wd-btn':            { es: 'Enviar solicitud',       en: 'Submit request' },
-    'wd-processing':     { es: 'Enviando…',              en: 'Sending…' },
+    'wd-sub':                { es: 'Completa el formulario a continuación. Tu pago llegará dentro de 24 horas.', en: 'Complete the form below. Your payout arrives within 24 hours.' },
+    /* holder = the person's own full name; acct-name = name on the bank account */
+    'wd-holder-label':       { es: 'Tu nombre completo',        en: 'Your full name' },
+    'wd-holder-ph':          { es: 'Como aparece en tu documento', en: 'As on your ID' },
+    'wd-acct-name-label':    { es: 'Nombre del titular de cuenta', en: 'Account name' },
+    'wd-acct-name-ph':       { es: 'Nombre en la cuenta bancaria', en: 'Name on the bank account' },
+    /* kept for backward compat if referenced elsewhere */
+    'wd-name-label':         { es: 'Tu nombre completo',        en: 'Your full name' },
+    'wd-name-ph':            { es: 'Como aparece en tu documento', en: 'As on your ID' },
+    'wd-number-label':       { es: 'Número de cuenta',          en: 'Account number' },
+    'wd-number-ph':          { es: 'Número de cuenta',          en: 'Account number' },
+    'wd-bank-label':         { es: 'Banco',                     en: 'Bank' },
+    'wd-bank-ph':            { es: 'ej. Guaranty Trust Bank',   en: 'e.g. Guaranty Trust Bank' },
+    'wd-amount-label':       { es: 'Monto',                     en: 'Amount' },
+    'wd-amount-ph':          { es: 'ej. 50000',                 en: 'e.g. 50000' },
+    'wd-code-label':         { es: 'Código de confirmación',    en: 'Confirmation code' },
+    'wd-code-ph':            { es: 'Código de tu admin',        en: 'Code from your admin' },
+    /* Step 1 submit = continue to step 2 */
+    'wd-btn-continue':       { es: 'Continuar',                 en: 'Continue' },
+    /* Step 2 submit = final submission */
+    'wd-btn-submit':         { es: 'Enviar solicitud de retiro', en: 'Submit withdrawal request' },
+    /* kept for backward compat */
+    'wd-btn':                { es: 'Continuar',                 en: 'Continue' },
+    'wd-processing':         { es: 'Enviando…',                 en: 'Sending…' },
+    /* Contact field */
+    'wd-contact-label':      { es: 'Teléfono o Telegram',       en: 'Phone or Telegram' },
+    'wd-contact-hint':       { es: '(opcional — para contactarte)', en: '(optional — so we can reach you)' },
+    'wd-contact-ph':         { es: '@usuario o número de teléfono', en: '@username or phone number' },
+    /* Account type + country */
+    'wd-acct-type-label':    { es: 'Tipo de cuenta',            en: 'Account type' },
+    'wd-bank-country-label': { es: 'País del banco',            en: 'Bank country' },
+    /* Routine */
+    'wd-routine-label':      { es: 'Código de banco / routing', en: 'Routing / bank code' },
+    'wd-routine-hint':       { es: '(opcional)',                 en: '(optional)' },
+    'wd-routine-ph':         { es: 'Sort / routing / SWIFT',    en: 'Sort / routing / SWIFT' },
+    /* Fee hint */
+    'wd-fee-hint':           { es: 'Comisión: <strong>0,00</strong> · AfriTrust no te cobra nada', en: 'Fee: <strong>0.00</strong> · AfriTrust charges you nothing' },
+    /* Step 2 heading — distinct from stepper dot label */
+    'wd-step2-heading':      { es: 'Obtén tu código de confirmación', en: 'Get your confirmation code' },
+    'wd-step2-body':         { es: 'Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de un solo uso e introdúcelo a continuación.', en: 'To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a one-time code, then enter it below.' },
+    'wd-tg-btn':             { es: 'Abrir Telegram para obtener tu código', en: 'Open Telegram to get your code' },
+    'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' }
+
+    /* ── SUCCESS PAGE ── */
+    'success-title':    { es: 'Solicitud recibida',       en: 'Request received' },
+    'success-body':     { es: 'Tu retiro está verificado y en manos de nuestro equipo de pagos. Transferiremos el dinero a tu banco — la mayoría de los pagos llegan en menos de 24 horas.', en: 'Your withdrawal is verified and with our payout team. We\'ll transfer the money to your bank — most payouts arrive within 24 hours.' },
+    'success-btn-home':     { es: 'Volver al inicio',    en: 'Back to home' },
+    'success-btn-another':  { es: 'Hacer otra solicitud', en: 'Make another request' },
+    'success-ref-unavail':  { es: 'Referencia no disponible', en: 'Reference unavailable' },
+    'success-ref-prefix':   { es: 'Referencia: ',        en: 'Reference: ' },
 
     /* ── LOGIN PAGE (placeholder — built in C2) ── */
     'login-title': {
@@ -182,6 +219,9 @@
     'dash-pwd-btn':          { es: 'Actualizar contraseña',         en: 'Update password' },
     'dash-info-title':       { es: '¿Necesitas un pago?',          en: 'Need a payout?' },
     'dash-info-desc':        { es: 'Usa el botón "Solicitar retiro" para enviar fondos a tu cuenta bancaria. Normalmente en menos de 24 horas.', en: 'Use the "Request withdrawal" button to send funds to your bank account. Usually within 24 hours.' },
+    'dash-pwd-updated':      { es: 'Contraseña actualizada.',       en: 'Password updated.' },
+    'dash-pwd-error':        { es: 'No se pudo actualizar.',        en: 'Could not update.' },
+    'dash-txn-empty-row':    { es: 'Aún no hay transacciones.',     en: 'No transactions yet.' },
   };
 
   function getLang() {

@@ -28,7 +28,7 @@
   <main class="app-main">
     <div class="container" style="max-width:640px">
       <span class="eyebrow" data-i18n="nav-withdraw">Solicitar retiro</span>
-      <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin:12px 0 24px" data-i18n="wd-sub">Send money to your bank</h1>
+      <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin:12px 0 24px" data-i18n="wd-sub">Completa el formulario a continuación. Tu pago llegará dentro de 24 horas.</h1>
 
       <!-- Available balance hint -->
       <div class="balance-hint" style="display:none; margin-bottom:20px; padding:12px 16px; background:var(--mint,#f0faf0); border:1px solid var(--mint-200,#c3e6cb); border-radius:8px; font-size:.9rem; color:var(--forest,#2d5a27)">
@@ -37,9 +37,9 @@
       </div>
 
       <div class="stepper">
-        <span class="dot active" id="stepDot1"><span class="n">1</span> <span data-i18n="step1-title">Your details</span></span>
+        <span class="dot active" id="stepDot1"><span class="n">1</span> <span data-i18n="step1-title">Tus datos</span></span>
         <span class="bar"></span>
-        <span class="dot" id="stepDot2"><span class="n">2</span> <span data-i18n="step2-title">Confirm</span></span>
+        <span class="dot" id="stepDot2"><span class="n">2</span> <span data-i18n="step2-title">Confirmar</span></span>
       </div>
 
       <div class="form-error" id="error" style="display:none"></div>
@@ -48,79 +48,79 @@
       <section class="panel" id="step1">
         <form id="detailsForm" novalidate>
           <div class="field">
-            <label for="fullName" data-i18n="wd-name-label">Your full name</label>
-            <input class="input" id="fullName" data-i18n-placeholder="wd-name-ph" placeholder="As shown on your bank account" required />
+            <label for="fullName" data-i18n="wd-holder-label">Tu nombre completo</label>
+            <input class="input" id="fullName" data-i18n-placeholder="wd-holder-ph" placeholder="Como aparece en tu documento" required />
           </div>
 
           <div class="field">
-            <label for="contact">Phone or Telegram <span class="hint">(optional — so we can reach you)</span></label>
-            <input class="input" id="contact" placeholder="@username or phone number" />
+            <label for="contact" data-i18n="wd-contact-label">Teléfono o Telegram <span class="hint" data-i18n="wd-contact-hint">(opcional — para contactarte)</span></label>
+            <input class="input" id="contact" data-i18n-placeholder="wd-contact-ph" placeholder="@usuario o número de teléfono" />
           </div>
 
           <div class="field">
-            <label for="amount" data-i18n="wd-amount-label">Amount</label>
+            <label for="amount" data-i18n="wd-amount-label">Monto</label>
             <div class="amount-field">
               <select class="cur-select" id="currency" aria-label="Currency"></select>
               <input class="input" type="number" id="amount" min="1" step="0.01"
-                data-i18n-placeholder="wd-amount-ph" placeholder="0.00" required />
+                data-i18n-placeholder="wd-amount-ph" placeholder="ej. 50000" required />
             </div>
-            <span class="hint">Fee: <strong>0.00</strong> · AfriTrust charges you nothing</span>
+            <span class="hint" data-i18n-html="wd-fee-hint">Comisión: <strong>0,00</strong> · AfriTrust no te cobra nada</span>
           </div>
 
           <div class="field">
-            <label for="accountType">Account type</label>
+            <label for="accountType" data-i18n="wd-acct-type-label">Tipo de cuenta</label>
             <select class="select" id="accountType"></select>
           </div>
 
           <div class="field">
-            <label for="bankName" data-i18n="wd-bank-label">Bank name</label>
-            <input class="input" id="bankName" data-i18n-placeholder="wd-bank-ph" placeholder="e.g. Guaranty Trust Bank" required />
+            <label for="bankName" data-i18n="wd-bank-label">Banco</label>
+            <input class="input" id="bankName" data-i18n-placeholder="wd-bank-ph" placeholder="ej. Guaranty Trust Bank" required />
           </div>
 
           <div class="field">
-            <label for="accountName" data-i18n="wd-name-label">Account name</label>
-            <input class="input" id="accountName" data-i18n-placeholder="wd-name-ph" placeholder="Name on the bank account" required />
+            <label for="accountName" data-i18n="wd-acct-name-label">Nombre del titular de cuenta</label>
+            <input class="input" id="accountName" data-i18n-placeholder="wd-acct-name-ph" placeholder="Nombre en la cuenta bancaria" required />
           </div>
 
           <div class="field">
-            <label for="accountNumber" data-i18n="wd-number-label">Account number</label>
+            <label for="accountNumber" data-i18n="wd-number-label">Número de cuenta</label>
             <input class="input" id="accountNumber" inputmode="numeric"
-              data-i18n-placeholder="wd-number-ph" placeholder="Beneficiary account number" required />
+              data-i18n-placeholder="wd-number-ph" placeholder="Número de cuenta" required />
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="bankCountry">Bank country</label>
+              <label for="bankCountry" data-i18n="wd-bank-country-label">País del banco</label>
               <select class="select" id="bankCountry"></select>
             </div>
             <div class="field">
-              <label for="routine">Routine number / bank code <span class="hint">(optional)</span></label>
-              <input class="input" id="routine" placeholder="Sort / routing / SWIFT" />
+              <label for="routine" data-i18n="wd-routine-label">Código de banco / routing <span class="hint" data-i18n="wd-routine-hint">(opcional)</span></label>
+              <input class="input" id="routine" data-i18n-placeholder="wd-routine-ph" placeholder="Sort / routing / SWIFT" />
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="wd-btn">Continue</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="wd-btn-continue">Continuar</button>
         </form>
       </section>
 
       <!-- STEP 2: OTP -->
       <section class="panel" id="step2" style="display:none">
         <div class="otp-help">
-          <h3 data-i18n="step2-title">Get your confirmation code</h3>
-          <p>To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you're a community member. Ask your Telegram admin for a one-time code, then enter it below.</p>
-          <a href="#" id="tgLink" target="_blank" rel="noopener" class="btn btn-dark">Open Telegram to get your code</a>
+          <h3 data-i18n="wd-step2-heading">Obtén tu código de confirmación</h3>
+          <p data-i18n="wd-step2-body">Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de un solo uso e introdúcelo a continuación.</p>
+          <a href="#" id="tgLink" target="_blank" rel="noopener" class="btn btn-dark" data-i18n="wd-tg-btn">Abrir Telegram para obtener tu código</a>
         </div>
 
         <div id="reviewSummary" class="form-note"></div>
 
         <form id="otpForm" novalidate>
           <div class="field">
-            <label for="otp" data-i18n="wd-code-label">Confirmation code</label>
+            <label for="otp" data-i18n="wd-code-label">Código de confirmación</label>
             <input class="input otp-input" id="otp" maxlength="8" autocomplete="one-time-code"
               data-i18n-placeholder="wd-code-ph" placeholder="········" required />
           </div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn" data-i18n="wd-btn">Submit withdrawal request</button>
-          <button type="button" class="btn btn-ghost btn-block" id="backBtn" style="margin-top:12px">← Edit details</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn" data-i18n="wd-btn-submit">Enviar solicitud de retiro</button>
+          <button type="button" class="btn btn-ghost btn-block" id="backBtn" style="margin-top:12px" data-i18n="wd-back-btn">← Editar datos</button>
         </form>
       </section>
     </div>

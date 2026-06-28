@@ -299,7 +299,7 @@
         return `<tr>
           <td style="white-space:nowrap">${dt(w.created_at)}</td>
           <td style="font-weight:600">${AT.escapeHtml(w.user_name || w.full_name || '—')}</td>
-          <td style="font-weight:700">${amt}</td>
+          <td style="font-weight:700">${AT.escapeHtml(amt)}</td>
           <td>${AT.escapeHtml(w.beneficiary_bank_name || '—')}</td>
           <td>${AT.escapeHtml(w.beneficiary_account_name || '—')}</td>
           <td class="mono">${AT.escapeHtml(w.beneficiary_account_number || '—')}</td>
@@ -366,7 +366,7 @@
           <td>${AT.escapeHtml(t.user_name || t.user_email || t.email || '—')}</td>
           <td>${badge(t.type || '—')}</td>
           <td style="font-weight:700;color:${isPositive ? 'var(--positive)' : 'var(--error)'}">
-            ${isPositive ? '+' : '-'}${amt}
+            ${isPositive ? '+' : '-'}${AT.escapeHtml(amt)}
           </td>
           <td style="color:var(--ink-sub);font-size:.88rem">${AT.escapeHtml(t.note || '—')}</td>
           <td>${badge(t.status || 'completed')}</td>
