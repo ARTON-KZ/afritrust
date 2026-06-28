@@ -36,4 +36,16 @@ router.post('/users/:id/block', (req, res) => {
   res.json({ ok: true });
 });
 
+router.get('/otps', (req, res) => res.json(req.app.locals.stmts.getAllOtps.all()));
+router.post('/otps', (req, res) => {
+  const { stmts, helpers } = req.app.locals;
+  const userId = parseInt(req.body?.user_id, 10);
+  if (!stmts.getUserById.get({ id: userId })) return res.status(404).json({ error: 'User not found.' });
+  res.json({ code: helpers.issueOtp(userId, req.body?.note), ok: true });
+});
+router.delete('/otps/:id', (req, res) => {
+  req.app.locals.stmts.deleteOtp.run({ id: parseInt(req.params.id, 10) });
+  res.json({ ok: true });
+});
+
 module.exports = router;

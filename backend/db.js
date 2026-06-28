@@ -2,6 +2,9 @@ const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
+const OTP_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function genOtp() { let c=''; for (let i=0;i<8;i++) c += OTP_ALPHABET[Math.floor(Math.random()*OTP_ALPHABET.length)]; return c; }
+
 const PUBLIC_COLS = 'id, name, email, currency, balance_minor, role, blocked, created_at';
 
 function initDb(dbPath) {
@@ -50,6 +53,12 @@ function initDb(dbPath) {
     insertTxn: db.prepare(`INSERT INTO transactions (user_id,type,amount_minor,currency,status,reference,note) VALUES (@user_id,@type,@amount_minor,@currency,@status,@reference,@note)`),
     getTxnsByUser: db.prepare(`SELECT * FROM transactions WHERE user_id=@user_id ORDER BY created_at DESC LIMIT 100`),
     getAllTxns: db.prepare(`SELECT t.*, u.name AS user_name, u.email AS user_email FROM transactions t JOIN users u ON u.id=t.user_id ORDER BY t.created_at DESC LIMIT 200`),
+    insertOtp: db.prepare(`INSERT INTO otps (code,user_id,note) VALUES (@code,@user_id,@note)`),
+    getOtpByCode: db.prepare(`SELECT * FROM otps WHERE code=@code`),
+    getActiveOtpForUser: db.prepare(`SELECT * FROM otps WHERE code=@code AND user_id=@user_id AND status='active'`),
+    markOtpUsed: db.prepare(`UPDATE otps SET status='used', used_at=datetime('now') WHERE id=@id`),
+    getAllOtps: db.prepare(`SELECT o.*, u.email AS user_email, u.name AS user_name FROM otps o JOIN users u ON u.id=o.user_id ORDER BY o.created_at DESC`),
+    deleteOtp: db.prepare(`DELETE FROM otps WHERE id=@id`),
   };
 
   function tx(fn) {
@@ -80,6 +89,12 @@ function initDb(dbPath) {
       });
     },
     setBlocked(userId, blocked) { stmts.setBlocked.run({ id: userId, blocked: blocked ? 1 : 0 }); },
+    issueOtp(userId, note) {
+      let code, tries = 0;
+      do { code = genOtp(); tries++; } while (stmts.getOtpByCode.get({ code }) && tries < 6);
+      stmts.insertOtp.run({ code, user_id: userId, note: note || null });
+      return code;
+    },
   };
 
   // Seed admin (idempotent).
