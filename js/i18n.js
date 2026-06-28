@@ -157,6 +157,31 @@
 
     /* ── LOGIN extra ── */
     'login-registered-msg': { es: 'Cuenta creada. Por favor inicia sesión.', en: 'Account created. Please sign in.' },
+
+    /* ── DASHBOARD ── */
+    'dash-eyebrow':          { es: 'Mi cuenta',                    en: 'My account' },
+    'dash-title':            { es: 'Panel de control',             en: 'Dashboard' },
+    'dash-logout':           { es: 'Cerrar sesión',                en: 'Log out' },
+    'dash-withdraw-btn':     { es: 'Solicitar retiro',             en: 'Request withdrawal' },
+    'dash-verified':         { es: 'Verificado',                   en: 'Verified' },
+    'dash-balance-label':    { es: 'Saldo disponible',             en: 'Available balance' },
+    'dash-balance-sub':      { es: 'Tu saldo actual en AfriTrust.', en: 'Your current AfriTrust balance.' },
+    'dash-balance-note':     { es: 'Transferible en menos de 24 h', en: 'Transferable in under 24 h' },
+    'dash-txn-heading':      { es: 'Historial de transacciones',   en: 'Transaction history' },
+    'dash-txn-type':         { es: 'Tipo',                         en: 'Type' },
+    'dash-txn-amount':       { es: 'Monto',                        en: 'Amount' },
+    'dash-txn-status':       { es: 'Estado',                       en: 'Status' },
+    'dash-txn-date':         { es: 'Fecha',                        en: 'Date' },
+    'dash-txn-empty':        { es: 'Aún no hay transacciones.',    en: 'No transactions yet.' },
+    'dash-pwd-heading':      { es: 'Cambiar contraseña',           en: 'Change password' },
+    'dash-pwd-sub':          { es: 'Elige una contraseña segura de al menos 8 caracteres.', en: 'Choose a strong password of at least 8 characters.' },
+    'dash-pwd-current-label':{ es: 'Contraseña actual',            en: 'Current password' },
+    'dash-pwd-current-ph':   { es: 'Tu contraseña actual',         en: 'Your current password' },
+    'dash-pwd-new-label':    { es: 'Nueva contraseña',             en: 'New password' },
+    'dash-pwd-new-ph':       { es: 'Mínimo 8 caracteres',          en: 'At least 8 characters' },
+    'dash-pwd-btn':          { es: 'Actualizar contraseña',         en: 'Update password' },
+    'dash-info-title':       { es: '¿Necesitas un pago?',          en: 'Need a payout?' },
+    'dash-info-desc':        { es: 'Usa el botón "Solicitar retiro" para enviar fondos a tu cuenta bancaria. Normalmente en menos de 24 horas.', en: 'Use the "Request withdrawal" button to send funds to your bank account. Usually within 24 hours.' },
   };
 
   function getLang() {
