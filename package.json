@@ -1,12 +1,25 @@
 {
   "name": "afritrust",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
+  "version": "1.0.0",
+  "type": "commonjs",
   "description": "afritrust frontend website",
+  "engines": { "node": ">=22" },
   "scripts": {
+    "start": "node backend/server.js",
+    "dev:api": "node backend/server.js",
+    "dev:web": "node serve.mjs",
     "serve": "node serve.mjs",
-    "screenshot": "node screenshot.mjs http://localhost:3000"
+    "screenshot": "node screenshot.mjs http://localhost:3000",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.4.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "puppeteer": "^24.0.0"
