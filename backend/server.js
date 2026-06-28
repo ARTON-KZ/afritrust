@@ -27,7 +27,7 @@ function createApp(deps) {
 
   app.use('/api/user', require('./routes/user'));
 
-  // Routers mounted in later tasks: /api/admin
+  app.use('/api/admin', require('./routes/admin'));
 
   // In production, serve the static frontend from the project root.
   if (process.env.SERVE_STATIC === '1') {
