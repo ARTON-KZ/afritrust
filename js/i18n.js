@@ -153,6 +153,7 @@
     'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' },
 
     /* ── SUCCESS PAGE ── */
+    'success-back':     { es: '← Volver al inicio',       en: '← Back to home' },
     'success-title':    { es: 'Solicitud recibida',       en: 'Request received' },
     'success-body':     { es: 'Tu retiro está verificado y en manos de nuestro equipo de pagos. Transferiremos el dinero a tu banco — la mayoría de los pagos llegan en menos de 24 horas.', en: 'Your withdrawal is verified and with our payout team. We\'ll transfer the money to your bank — most payouts arrive within 24 hours.' },
     'success-btn-home':     { es: 'Volver al inicio',    en: 'Back to home' },
