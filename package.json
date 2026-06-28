@@ -1,0 +1,14 @@
+{
+  "name": "afritrust",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "afritrust frontend website",
+  "scripts": {
+    "serve": "node serve.mjs",
+    "screenshot": "node screenshot.mjs http://localhost:3000"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}
