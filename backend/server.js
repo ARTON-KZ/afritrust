@@ -1,8 +1,8 @@
-require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const { initDb } = require('./db');
 
 function createApp(deps) {
@@ -20,7 +20,12 @@ function createApp(deps) {
   app.use(express.json());
 
   app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
-  // Routers mounted in later tasks: /api/auth, /api/user, /api/admin
+
+  const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 30 });
+  app.use('/api/auth/login', authLimiter);
+  app.use('/api/auth', require('./routes/auth'));
+
+  // Routers mounted in later tasks: /api/user, /api/admin
 
   // In production, serve the static frontend from the project root.
   if (process.env.SERVE_STATIC === '1') {
@@ -33,6 +38,7 @@ function createApp(deps) {
 }
 
 if (require.main === module) {
+  require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
   if (!process.env.JWT_SECRET) { console.error('FATAL: JWT_SECRET is not set.'); process.exit(1); }
   const deps = initDb();
   const app = createApp(deps);
