@@ -24,10 +24,13 @@
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#how">How it works</a>
-        <a href="#trust">Why AfriTrust</a>
-        <a href="#faq">FAQ</a>
-        <a href="withdraw.html" class="btn btn-primary btn-sm">Request a withdrawal</a>
+        <a href="#how" data-i18n="nav-how">How it works</a>
+        <a href="#trust" data-i18n="nav-why">Why AfriTrust</a>
+        <a href="#faq" data-i18n="nav-faq">FAQ</a>
+        <a href="login.html" data-i18n="nav-login">Login</a>
+        <a href="register.html" data-i18n="nav-register">Register</a>
+        <a href="withdraw.html" class="btn btn-primary btn-sm" data-i18n="nav-withdraw">Request a withdrawal</a>
+        <button id="langToggle" class="btn btn-ghost btn-sm">English</button>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -41,18 +44,19 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow reveal">Bank payouts</span>
-          <h1 class="display reveal" data-delay="1">Get paid,<br>straight to your bank.</h1>
-          <p class="lead reveal" data-delay="2">AfriTrust sends your payout to any bank account. Enter your bank details, confirm it's you with a code from your Telegram admin, and our team transfers your money — usually within 24 hours.</p>
+          <span class="eyebrow reveal" data-i18n="hero-eyebrow">Bank payouts</span>
+          <h1 class="display reveal" data-delay="1" data-i18n-html="hero-title">Get paid,<br>straight to your bank.</h1>
+          <p class="lead reveal" data-delay="2" data-i18n="hero-sub">AfriTrust sends your payout to any bank account. Enter your bank details, confirm it's you with a code from your Telegram admin, and our team transfers your money — usually within 24 hours.</p>
           <div class="hero-actions reveal" data-delay="3">
-            <a href="withdraw.html" class="btn btn-primary btn-lg">Request a withdrawal
+            <a href="withdraw.html" class="btn btn-primary btn-lg">
+              <span data-i18n="hero-btn-withdraw">Request a withdrawal</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
+            <a href="#how" class="btn btn-ghost btn-lg" data-i18n="hero-btn-how">See how it works</a>
           </div>
           <div class="hero-trust reveal" data-delay="3">
             <span class="stars" aria-hidden="true">★★★★★</span>
-            <span>Trusted by members across 14 African countries</span>
+            <span data-i18n="hero-trust-text">Trusted by members across 14 African countries</span>
           </div>
         </div>
 
@@ -61,17 +65,17 @@
           <div class="balance-card">
             <span class="bc-chip" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Verified
+              <span data-i18n="card-chip">Verified</span>
             </span>
             <div class="bc-head">
-              <span class="bc-tag">Withdrawal request</span>
+              <span class="bc-tag" data-i18n="card-tag">Withdrawal request</span>
               <span class="bc-flag" aria-hidden="true">🏦</span>
             </div>
-            <div class="req-line"><span>Bank</span><strong>Guaranty Trust Bank</strong></div>
-            <div class="req-line"><span>Account name</span><strong>Amara Okafor</strong></div>
-            <div class="req-line"><span>Account number</span><strong class="bc-acct">•••• •••• 6789</strong></div>
-            <div class="req-line"><span>Confirmation code</span><strong class="bc-acct">QX3W·····</strong></div>
-            <a href="withdraw.html" class="btn btn-primary btn-block">Confirm &amp; submit</a>
+            <div class="req-line"><span data-i18n="card-bank-lbl">Bank</span><strong>Guaranty Trust Bank</strong></div>
+            <div class="req-line"><span data-i18n="card-name-lbl">Account name</span><strong>Amara Okafor</strong></div>
+            <div class="req-line"><span data-i18n="card-num-lbl">Account number</span><strong class="bc-acct">•••• •••• 6789</strong></div>
+            <div class="req-line"><span data-i18n="card-code-lbl">Confirmation code</span><strong class="bc-acct">QX3W·····</strong></div>
+            <a href="withdraw.html" class="btn btn-primary btn-block" data-i18n="card-confirm">Confirm &amp; submit</a>
           </div>
         </div>
       </div>
@@ -80,9 +84,9 @@
     <!-- TRUST STRIP -->
     <section class="trust-strip" id="trust">
       <div class="container">
-        <div class="trust-item reveal"><strong>₦1.2B+</strong><span>Paid out to members</span></div>
-        <div class="trust-item reveal" data-delay="1"><strong>24,000+</strong><span>Members paid</span></div>
-        <div class="trust-item reveal" data-delay="2"><strong>Under 24h</strong><span>Typical payout time</span></div>
+        <div class="trust-item reveal"><strong>₦1.2B+</strong><span data-i18n="trust-paid-label">Paid out to members</span></div>
+        <div class="trust-item reveal" data-delay="1"><strong>24,000+</strong><span data-i18n="trust-members-label">Members paid</span></div>
+        <div class="trust-item reveal" data-delay="2"><strong data-i18n="trust-time-value">Under 24h</strong><span data-i18n="trust-time-label">Typical payout time</span></div>
       </div>
     </section>
 
@@ -90,29 +94,29 @@
     <section class="section" id="how">
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow">How it works</span>
-          <h2>Three steps to your payout</h2>
-          <p>No payment is ever taken on AfriTrust. You tell us where to send your money, confirm it's you, and we pay you.</p>
+          <span class="eyebrow" data-i18n="how-eyebrow">How it works</span>
+          <h2 data-i18n="how-title">Three steps to your payout</h2>
+          <p data-i18n="how-sub">No payment is ever taken on AfriTrust. You tell us where to send your money, confirm it's you, and we pay you.</p>
         </div>
 
         <div class="steps steps-3">
           <div class="step reveal">
             <div class="step-num"></div>
             <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
-            <h3>Enter your bank details</h3>
-            <p>Add the bank account you want paid — account name, number, bank and the amount.</p>
+            <h3 data-i18n="step1-title">Enter your bank details</h3>
+            <p data-i18n="step1-desc">Add the bank account you want paid — account name, number, bank and the amount.</p>
           </div>
           <div class="step reveal" data-delay="1">
             <div class="step-num"></div>
             <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/></svg></div>
-            <h3>Confirm with your code</h3>
-            <p>Your Telegram admin sends you a one-time code that confirms you're a member.</p>
+            <h3 data-i18n="step2-title">Confirm with your code</h3>
+            <p data-i18n="step2-desc">Your Telegram admin sends you a one-time code that confirms you're a member.</p>
           </div>
           <div class="step reveal" data-delay="2">
             <div class="step-num"></div>
             <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-            <h3>Get paid</h3>
-            <p>Our team reviews your verified request and transfers the money to your bank.</p>
+            <h3 data-i18n="step3-title">Get paid</h3>
+            <p data-i18n="step3-desc">Our team reviews your verified request and transfers the money to your bank.</p>
           </div>
         </div>
       </div>
@@ -124,22 +128,22 @@
         <div class="band-dark reveal">
           <div class="band-grid">
             <div>
-              <span class="eyebrow" style="color:#9bb389">Built on trust</span>
-              <h2 style="margin-top:12px">Your details stay <span class="accent">private until it's you</span></h2>
-              <p style="margin-top:16px; max-width:48ch">AfriTrust never asks you to pay anything. We only show your bank details to our payout team after your community code confirms it's really you.</p>
+              <span class="eyebrow" style="color:#9bb389" data-i18n="assur-eyebrow">Built on trust</span>
+              <h2 style="margin-top:12px" data-i18n-html="assur-title">Your details stay <span class="accent">private until it's you</span></h2>
+              <p style="margin-top:16px; max-width:48ch" data-i18n="assur-sub">AfriTrust never asks you to pay anything. We only show your bank details to our payout team after your community code confirms it's really you.</p>
             </div>
             <div class="assurances">
               <div class="assurance">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z"/></svg>
-                <div><strong>You never pay a fee here</strong><span>AfriTrust only pays out — money flows to you, never from you.</span></div>
+                <div><strong data-i18n="assur-1-title">You never pay a fee here</strong><span data-i18n="assur-1-desc">AfriTrust only pays out — money flows to you, never from you.</span></div>
               </div>
               <div class="assurance">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <div><strong>Member code required</strong><span>Each request is unlocked by a single-use code from your admin.</span></div>
+                <div><strong data-i18n="assur-2-title">Member code required</strong><span data-i18n="assur-2-desc">Each request is unlocked by a single-use code from your admin.</span></div>
               </div>
               <div class="assurance">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-                <div><strong>Tracked end to end</strong><span>Every request gets a reference number so you can follow your payout.</span></div>
+                <div><strong data-i18n="assur-3-title">Tracked end to end</strong><span data-i18n="assur-3-desc">Every request gets a reference number so you can follow your payout.</span></div>
               </div>
             </div>
           </div>
@@ -151,25 +155,25 @@
     <section class="section" id="faq">
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow">Questions</span>
-          <h2>Good to know</h2>
+          <span class="eyebrow" data-i18n="faq-eyebrow">Questions</span>
+          <h2 data-i18n="faq-title">Good to know</h2>
         </div>
         <div class="faq">
           <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false">Do I ever pay money on AfriTrust?<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><div class="faq-a-inner">No. AfriTrust only sends money out. You enter the bank account you want paid — we never collect card details or take payment.</div></div>
+            <button class="faq-q" aria-expanded="false"><span data-i18n="faq1-q">Do I ever pay money on AfriTrust?</span><span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner" data-i18n="faq1-a">No. AfriTrust only sends money out. You enter the bank account you want paid — we never collect card details or take payment.</div></div>
           </div>
           <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false">Do I need to create an account?<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><div class="faq-a-inner">No sign-up needed. Just fill in the withdrawal form and confirm with the code from your Telegram admin.</div></div>
+            <button class="faq-q" aria-expanded="false"><span data-i18n="faq2-q">Do I need to create an account?</span><span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner" data-i18n="faq2-a">No sign-up needed. Just fill in the withdrawal form and confirm with the code from your Telegram admin.</div></div>
           </div>
           <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false">What is the confirmation code?<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><div class="faq-a-inner">A single-use code your Telegram community admin sends you. It confirms you're a genuine member before your request reaches our payout team. It is not a code from your bank.</div></div>
+            <button class="faq-q" aria-expanded="false"><span data-i18n="faq3-q">What is the confirmation code?</span><span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner" data-i18n="faq3-a">A single-use code your Telegram community admin sends you. It confirms you're a genuine member before your request reaches our payout team. It is not a code from your bank.</div></div>
           </div>
           <div class="faq-item reveal">
-            <button class="faq-q" aria-expanded="false">How long does a payout take?<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><div class="faq-a-inner">Most verified requests are paid within 24 hours. You'll get a reference number to track your request.</div></div>
+            <button class="faq-q" aria-expanded="false"><span data-i18n="faq4-q">How long does a payout take?</span><span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner" data-i18n="faq4-a">Most verified requests are paid within 24 hours. You'll get a reference number to track your request.</div></div>
           </div>
         </div>
       </div>
@@ -179,9 +183,9 @@
     <section class="section-tight">
       <div class="container">
         <div class="cta-band reveal">
-          <h2>Ready to get paid?</h2>
-          <p>Enter your bank details, confirm with your code, and we'll send your money.</p>
-          <a href="withdraw.html" class="btn btn-dark btn-lg">Request a withdrawal</a>
+          <h2 data-i18n="cta-title">Ready to get paid?</h2>
+          <p data-i18n="cta-sub">Enter your bank details, confirm with your code, and we'll send your money.</p>
+          <a href="withdraw.html" class="btn btn-dark btn-lg" data-i18n="cta-btn">Request a withdrawal</a>
         </div>
       </div>
     </section>
@@ -196,33 +200,34 @@
             <span class="mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
             AfriTrust
           </a>
-          <p class="footer-disclaimer">AfriTrust is a community payout service. We only send funds to members — we never take payment on this site.</p>
+          <p class="footer-disclaimer" data-i18n="footer-disclaimer">AfriTrust is a community payout service. We only send funds to members — we never take payment on this site.</p>
         </div>
         <div class="footer-col">
-          <h4>Product</h4>
-          <a href="#how">How it works</a>
-          <a href="withdraw.html">Request a withdrawal</a>
-          <a href="#faq">FAQ</a>
+          <h4 data-i18n="footer-col-product">Product</h4>
+          <a href="#how" data-i18n="footer-how">How it works</a>
+          <a href="withdraw.html" data-i18n="footer-withdraw">Request a withdrawal</a>
+          <a href="#faq" data-i18n="footer-faq">FAQ</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
-          <a href="#" id="tgFooter">Telegram channel</a>
-          <a href="#trust">Why AfriTrust</a>
+          <h4 data-i18n="footer-col-community">Community</h4>
+          <a href="#" id="tgFooter" data-i18n="footer-telegram">Telegram channel</a>
+          <a href="#trust" data-i18n="footer-why">Why AfriTrust</a>
         </div>
         <div class="footer-col">
-          <h4>Support</h4>
-          <a href="#" id="tgFooter2">Contact admin</a>
-          <a href="admin.html">Admin</a>
+          <h4 data-i18n="footer-col-support">Support</h4>
+          <a href="#" id="tgFooter2" data-i18n="footer-contact">Contact admin</a>
+          <a href="admin.html" data-i18n="footer-admin">Admin</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> AfriTrust. All rights reserved.</span>
-        <span>Made for communities across Africa.</span>
+        <span><span data-i18n="footer-copy">© AfriTrust. All rights reserved.</span> <span id="year"></span></span>
+        <span data-i18n="footer-made-for">Made for communities across Africa.</span>
       </div>
     </div>
   </footer>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
