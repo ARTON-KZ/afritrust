@@ -47,7 +47,7 @@ window.AT = (function () {
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  const CURRENCIES = ['NGN', 'USD', 'GHS', 'KES', 'ZAR', 'GBP', 'EUR', 'MXN'];
+  const CURRENCIES = ['MXN', 'ARS', 'CLP', 'COP', 'PEN', 'BOB', 'PYG', 'VES', 'USD', 'EUR', 'GBP', 'NGN', 'GHS', 'KES', 'ZAR'];
 
   // Bilingual account type labels: { value, es, en }
   const ACCOUNT_TYPES_I18N = [
@@ -63,6 +63,15 @@ window.AT = (function () {
 
   // Bilingual country labels: { value, es, en }
   const COUNTRIES_I18N = [
+    { value: 'Mexico',          es: 'México',               en: 'Mexico' },
+    { value: 'Argentina',       es: 'Argentina',            en: 'Argentina' },
+    { value: 'Chile',           es: 'Chile',                en: 'Chile' },
+    { value: 'Colombia',        es: 'Colombia',             en: 'Colombia' },
+    { value: 'Peru',            es: 'Perú',                 en: 'Peru' },
+    { value: 'Ecuador',         es: 'Ecuador',              en: 'Ecuador' },
+    { value: 'Bolivia',         es: 'Bolivia',              en: 'Bolivia' },
+    { value: 'Paraguay',        es: 'Paraguay',             en: 'Paraguay' },
+    { value: 'Venezuela',       es: 'Venezuela',            en: 'Venezuela' },
     { value: 'Nigeria',         es: 'Nigeria',              en: 'Nigeria' },
     { value: 'Ghana',           es: 'Ghana',                en: 'Ghana' },
     { value: 'Kenya',           es: 'Kenia',                en: 'Kenya' },

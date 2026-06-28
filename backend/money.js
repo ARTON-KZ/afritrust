@@ -1,4 +1,9 @@
-const ALLOWED_CURRENCIES = ['NGN', 'USD', 'EUR', 'GBP', 'GHS', 'KES', 'ZAR'];
+const ALLOWED_CURRENCIES = [
+  // Latin America (Spanish-speaking markets)
+  'MXN', 'ARS', 'CLP', 'COP', 'PEN', 'BOB', 'PYG', 'VES',
+  // International + others
+  'USD', 'EUR', 'GBP', 'NGN', 'GHS', 'KES', 'ZAR',
+];
 
 const isAllowedCurrency = (c) => ALLOWED_CURRENCIES.includes(String(c || '').toUpperCase());
 

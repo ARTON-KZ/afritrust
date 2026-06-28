@@ -23,7 +23,7 @@
     },
     'hero-btn-withdraw': { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'hero-btn-how':      { es: 'Ver cómo funciona', en: 'See how it works' },
-    'hero-trust-text':   { es: 'Con la confianza de miembros en 14 países africanos', en: 'Trusted by members across 14 African countries' },
+    'hero-trust-text':   { es: 'Con la confianza de miembros en muchos países', en: 'Trusted by members across many countries' },
 
     /* ── HERO CARD (visual) ── */
     'card-chip':     { es: 'Verificado',          en: 'Verified' },
@@ -31,6 +31,7 @@
     'card-bank-lbl': { es: 'Banco',               en: 'Bank' },
     'card-name-lbl': { es: 'Nombre de cuenta',    en: 'Account name' },
     'card-num-lbl':  { es: 'Número de cuenta',    en: 'Account number' },
+    'card-amount-lbl': { es: 'Monto',             en: 'Amount' },
     'card-code-lbl': { es: 'Código de confirmación', en: 'Confirmation code' },
     'card-confirm':  { es: 'Confirmar y enviar',  en: 'Confirm & submit' },
 
@@ -101,7 +102,7 @@
     'footer-contact':       { es: 'Contactar admin',   en: 'Contact admin' },
     'footer-admin':         { es: 'Administrador',     en: 'Admin' },
     'footer-copy':          { es: '© 2026 AfriTrust. Todos los derechos reservados.', en: '© 2026 AfriTrust. All rights reserved.' },
-    'footer-made-for':      { es: 'Hecho para comunidades de toda África.', en: 'Made for communities across Africa.' },
+    'footer-made-for':      { es: 'Hecho para comunidades de toda Latinoamérica.', en: 'Made for communities across Latin America.' },
 
     /* ── WITHDRAW PAGE ── */
     'wd-title': {

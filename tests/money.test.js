@@ -4,7 +4,14 @@ const m = require('../backend/money');
 
 test('isAllowedCurrency', () => {
   assert.equal(m.isAllowedCurrency('NGN'), true);
+  assert.equal(m.isAllowedCurrency('MXN'), true);
+  assert.equal(m.isAllowedCurrency('ARS'), true);
+  assert.equal(m.isAllowedCurrency('mxn'), true); // case-insensitive
   assert.equal(m.isAllowedCurrency('xyz'), false);
+});
+test('formats Latin American pesos', () => {
+  // MXN minor units → peso amount with 2 decimals
+  assert.match(m.formatMoney(850000, 'MXN'), /8,500\.00/);
 });
 test('toMinor parses and rounds to cents', () => {
   assert.deepEqual(m.toMinor('10.50'), { ok: true, minor: 1050 });
