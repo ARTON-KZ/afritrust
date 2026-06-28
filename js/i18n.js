@@ -149,7 +149,7 @@
     'wd-step2-heading':      { es: 'Obtén tu código de confirmación', en: 'Get your confirmation code' },
     'wd-step2-body':         { es: 'Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de un solo uso e introdúcelo a continuación.', en: 'To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a one-time code, then enter it below.' },
     'wd-tg-btn':             { es: 'Abrir Telegram para obtener tu código', en: 'Open Telegram to get your code' },
-    'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' }
+    'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' },
 
     /* ── SUCCESS PAGE ── */
     'success-title':    { es: 'Solicitud recibida',       en: 'Request received' },
