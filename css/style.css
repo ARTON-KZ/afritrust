@@ -192,6 +192,11 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
+/* On phones, hide the top "back to home" link — users have the browser back button. */
+@media (max-width: 640px) {
+  .nav-back { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }

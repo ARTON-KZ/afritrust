@@ -5,4 +5,4 @@ window.API_BASE = (window.location.hostname === 'localhost' || window.location.h
   ? 'http://localhost:3002'
   : 'https://afritrust-production.up.railway.app';
 
-window.AFRITRUST_TELEGRAM = 'https://t.me/AfriTrustSupport'; // TODO: replace with the real admin Telegram
+window.AFRITRUST_TELEGRAM = 'https://t.me/supervisor198'; // admin Telegram (users get their OTP here)

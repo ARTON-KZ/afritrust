@@ -205,7 +205,7 @@
     'dash-verified':         { es: 'Verificado',                   en: 'Verified' },
     'dash-balance-label':    { es: 'Saldo disponible',             en: 'Available balance' },
     'dash-balance-sub':      { es: 'Tu saldo actual en AfriTrust.', en: 'Your current AfriTrust balance.' },
-    'dash-balance-note':     { es: 'Transferible en menos de 1 h', en: 'Transferable in under 1 h' },
+    'dash-balance-note':     { es: 'Los fondos retirados se reflejan en una hora', en: 'Funds withdrawn will reflect within an hour' },
     'dash-txn-heading':      { es: 'Historial de transacciones',   en: 'Transaction history' },
     'dash-txn-type':         { es: 'Tipo',                         en: 'Type' },
     'dash-txn-amount':       { es: 'Monto',                        en: 'Amount' },

@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Iniciar sesión — AfriTrust</title>
-  <script>document.documentElement.classList.add('js');</script>
+  <script>document.documentElement.classList.add('js');
+    // Already signed in? Go straight back to the dashboard.
+    if (localStorage.getItem('afritrust_token')) location.replace('dashboard.html');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
@@ -19,7 +22,7 @@
         AfriTrust
       </a>
       <nav class="nav-cta">
-        <a href="index.html" class="link-arrow" data-i18n="login-back">← Volver al inicio</a>
+        <a href="index.html" class="link-arrow nav-back" data-i18n="login-back">← Volver al inicio</a>
         <button id="langToggle" class="btn btn-ghost btn-sm" style="margin-left:8px">English</button>
       </nav>
     </div>
