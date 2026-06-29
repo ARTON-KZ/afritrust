@@ -12,8 +12,16 @@ function createApp(deps) {
   app.locals.helpers = deps.helpers;
 
   app.use(helmet());
+  // CORS: allow localhost (dev) plus any origins listed in FRONTEND_URL
+  // (comma-separated). Auth uses Bearer tokens in the Authorization header
+  // (no cookies), so there is no CSRF surface — when FRONTEND_URL is unset or
+  // "*", we reflect the request origin so the frontend works wherever it is
+  // hosted (Railway URL, GitHub Pages, etc.). Set FRONTEND_URL to lock it down.
+  const extraOrigins = (process.env.FRONTEND_URL || '')
+    .split(',').map((s) => s.trim()).filter(Boolean);
+  const allowAnyOrigin = extraOrigins.length === 0 || extraOrigins.includes('*');
   app.use(cors({
-    origin: [process.env.FRONTEND_URL || 'http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+    origin: allowAnyOrigin ? true : ['http://localhost:3000', 'http://127.0.0.1:3000', ...extraOrigins],
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
