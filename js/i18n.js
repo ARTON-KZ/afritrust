@@ -18,8 +18,8 @@
       en: 'Get paid,<br>straight to your bank.',
     },
     'hero-sub': {
-      es: 'AfriTrust envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 24 horas.',
-      en: 'AfriTrust sends your payout to any bank account. Enter your bank details, confirm it\'s you with a code from your Telegram admin, and our team transfers your money — usually within 24 hours.',
+      es: 'AfriTrust envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 1 hora.',
+      en: 'AfriTrust sends your payout to any bank account. Enter your bank details, confirm it\'s you with a code from your Telegram admin, and our team transfers your money — usually within 1 hour.',
     },
     'hero-btn-withdraw': { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'hero-btn-how':      { es: 'Ver cómo funciona', en: 'See how it works' },
@@ -38,7 +38,7 @@
     /* ── TRUST STRIP ── */
     'trust-paid-label':    { es: 'Pagado a miembros',      en: 'Paid out to members' },
     'trust-members-label': { es: 'Miembros pagados',       en: 'Members paid' },
-    'trust-time-value':    { es: 'Menos de 24h',           en: 'Under 24h' },
+    'trust-time-value':    { es: 'Menos de 1h',           en: 'Under 1h' },
     'trust-time-label':    { es: 'Tiempo típico de pago',  en: 'Typical payout time' },
 
     /* ── HOW IT WORKS ── */
@@ -82,7 +82,7 @@
     'faq3-q': { es: '¿Qué es el código de confirmación?',     en: 'What is the confirmation code?' },
     'faq3-a': { es: 'Un código de un solo uso que te envía el administrador de tu comunidad de Telegram. Confirma que eres un miembro genuino antes de que tu solicitud llegue a nuestro equipo de pagos. No es un código de tu banco.', en: 'A single-use code your Telegram community admin sends you. It confirms you\'re a genuine member before your request reaches our payout team. It is not a code from your bank.' },
     'faq4-q': { es: '¿Cuánto tiempo tarda un pago?',          en: 'How long does a payout take?' },
-    'faq4-a': { es: 'La mayoría de las solicitudes verificadas se pagan en 24 horas. Recibirás un número de referencia para hacer seguimiento.', en: 'Most verified requests are paid within 24 hours. You\'ll get a reference number to track your request.' },
+    'faq4-a': { es: 'La mayoría de las solicitudes verificadas se pagan en 1 hora. Recibirás un número de referencia para hacer seguimiento.', en: 'Most verified requests are paid within 1 hour. You\'ll get a reference number to track your request.' },
 
     /* ── CTA ── */
     'cta-title': { es: '¿Listo para recibir tu pago?', en: 'Ready to get paid?' },
@@ -109,7 +109,7 @@
       es: 'SOLICITAR <span class="accent">RETIRO</span>',
       en: 'REQUEST A <span class="accent">WITHDRAWAL</span>',
     },
-    'wd-sub':                { es: 'Completa el formulario a continuación. Tu pago llegará dentro de 24 horas.', en: 'Complete the form below. Your payout arrives within 24 hours.' },
+    'wd-sub':                { es: 'Completa el formulario a continuación. Tu pago llegará dentro de 1 hora.', en: 'Complete the form below. Your payout arrives within 1 hour.' },
     /* holder = the person's own full name; acct-name = name on the bank account */
     'wd-holder-label':       { es: 'Tu nombre completo',        en: 'Your full name' },
     'wd-holder-ph':          { es: 'Como aparece en tu documento', en: 'As on your ID' },
@@ -134,9 +134,9 @@
     'wd-btn':                { es: 'Continuar',                 en: 'Continue' },
     'wd-processing':         { es: 'Enviando…',                 en: 'Sending…' },
     /* Contact field */
-    'wd-contact-label':      { es: 'Teléfono o Telegram',       en: 'Phone or Telegram' },
+    'wd-contact-label':      { es: 'Número de teléfono',       en: 'Phone number' },
     'wd-contact-hint':       { es: '(opcional — para contactarte)', en: '(optional — so we can reach you)' },
-    'wd-contact-ph':         { es: '@usuario o número de teléfono', en: '@username or phone number' },
+    'wd-contact-ph':         { es: 'ej. +52 55 1234 5678', en: 'e.g. +52 55 1234 5678' },
     /* Account type + country */
     'wd-acct-type-label':    { es: 'Tipo de cuenta',            en: 'Account type' },
     'wd-bank-country-label': { es: 'País del banco',            en: 'Bank country' },
@@ -155,7 +155,7 @@
     /* ── SUCCESS PAGE ── */
     'success-back':     { es: '← Volver al inicio',       en: '← Back to home' },
     'success-title':    { es: 'Solicitud recibida',       en: 'Request received' },
-    'success-body':     { es: 'Tu retiro está verificado y en manos de nuestro equipo de pagos. Transferiremos el dinero a tu banco — la mayoría de los pagos llegan en menos de 24 horas.', en: 'Your withdrawal is verified and with our payout team. We\'ll transfer the money to your bank — most payouts arrive within 24 hours.' },
+    'success-body':     { es: 'Tu retiro está verificado y en manos de nuestro equipo de pagos. Transferiremos el dinero a tu banco — la mayoría de los pagos llegan en menos de 1 hora.', en: 'Your withdrawal is verified and with our payout team. We\'ll transfer the money to your bank — most payouts arrive within 1 hour.' },
     'success-btn-home':     { es: 'Volver al inicio',    en: 'Back to home' },
     'success-btn-another':  { es: 'Hacer otra solicitud', en: 'Make another request' },
     'success-ref-unavail':  { es: 'Referencia no disponible', en: 'Reference unavailable' },
@@ -205,7 +205,7 @@
     'dash-verified':         { es: 'Verificado',                   en: 'Verified' },
     'dash-balance-label':    { es: 'Saldo disponible',             en: 'Available balance' },
     'dash-balance-sub':      { es: 'Tu saldo actual en AfriTrust.', en: 'Your current AfriTrust balance.' },
-    'dash-balance-note':     { es: 'Transferible en menos de 24 h', en: 'Transferable in under 24 h' },
+    'dash-balance-note':     { es: 'Transferible en menos de 1 h', en: 'Transferable in under 1 h' },
     'dash-txn-heading':      { es: 'Historial de transacciones',   en: 'Transaction history' },
     'dash-txn-type':         { es: 'Tipo',                         en: 'Type' },
     'dash-txn-amount':       { es: 'Monto',                        en: 'Amount' },
@@ -220,7 +220,7 @@
     'dash-pwd-new-ph':       { es: 'Mínimo 8 caracteres',          en: 'At least 8 characters' },
     'dash-pwd-btn':          { es: 'Actualizar contraseña',         en: 'Update password' },
     'dash-info-title':       { es: '¿Necesitas un pago?',          en: 'Need a payout?' },
-    'dash-info-desc':        { es: 'Usa el botón "Solicitar retiro" para enviar fondos a tu cuenta bancaria. Normalmente en menos de 24 horas.', en: 'Use the "Request withdrawal" button to send funds to your bank account. Usually within 24 hours.' },
+    'dash-info-desc':        { es: 'Usa el botón "Solicitar retiro" para enviar fondos a tu cuenta bancaria. Normalmente en menos de 1 hora.', en: 'Use the "Request withdrawal" button to send funds to your bank account. Usually within 1 hour.' },
     'dash-pwd-updated':      { es: 'Contraseña actualizada.',       en: 'Password updated.' },
     'dash-pwd-error':        { es: 'No se pudo actualizar.',        en: 'Could not update.' },
     'dash-txn-empty-row':    { es: 'Aún no hay transacciones.',     en: 'No transactions yet.' },
