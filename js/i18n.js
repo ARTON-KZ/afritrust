@@ -225,6 +225,15 @@
     'dash-pwd-updated':      { es: 'Contraseña actualizada.',       en: 'Password updated.' },
     'dash-pwd-error':        { es: 'No se pudo actualizar.',        en: 'Could not update.' },
     'dash-txn-empty-row':    { es: 'Aún no hay transacciones.',     en: 'No transactions yet.' },
+    /* transaction type + status labels (rendered by dashboard.js) */
+    'txn-type-withdrawal':   { es: 'Retiro',     en: 'Withdrawal' },
+    'txn-type-credit':       { es: 'Abono',      en: 'Credit' },
+    'txn-type-debit':        { es: 'Cargo',      en: 'Debit' },
+    'txn-status-pending':    { es: 'Pendiente',  en: 'Pending' },
+    'txn-status-accepted':   { es: 'Aceptado',   en: 'Accepted' },
+    'txn-status-rejected':   { es: 'Rechazado',  en: 'Rejected' },
+    'txn-status-completed':  { es: 'Completado', en: 'Completed' },
+    'txn-status-failed':     { es: 'Rechazado',  en: 'Rejected' },
   };
 
   function getLang() {
