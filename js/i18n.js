@@ -23,6 +23,7 @@
     },
     'hero-btn-withdraw': { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'hero-btn-how':      { es: 'Ver cómo funciona', en: 'See how it works' },
+    'hero-btn-signup':   { es: 'Crear cuenta gratis', en: 'Create free account' },
     'hero-trust-text':   { es: 'Con la confianza de miembros en muchos países', en: 'Trusted by members across many countries' },
 
     /* ── HERO CARD (visual) ── */
@@ -87,7 +88,7 @@
     /* ── CTA ── */
     'cta-title': { es: '¿Listo para recibir tu pago?', en: 'Ready to get paid?' },
     'cta-sub':   { es: 'Ingresa tus datos bancarios, confirma con tu código y enviaremos tu dinero.', en: 'Enter your bank details, confirm with your code, and we\'ll send your money.' },
-    'cta-btn':   { es: 'Solicitar retiro',              en: 'Request a withdrawal' },
+    'cta-btn':   { es: 'Crear cuenta gratis',           en: 'Create free account' },
 
     /* ── FOOTER ── */
     'footer-disclaimer': { es: 'AfriTrust es un servicio de pagos comunitario. Solo enviamos fondos a miembros — nunca cobramos pagos en este sitio.', en: 'AfriTrust is a community payout service. We only send funds to members — we never take payment on this site.' },
