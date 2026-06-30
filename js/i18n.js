@@ -229,6 +229,7 @@
     'txn-type-withdrawal':   { es: 'Retiro',     en: 'Withdrawal' },
     'txn-type-credit':       { es: 'Abono',      en: 'Credit' },
     'txn-type-debit':        { es: 'Cargo',      en: 'Debit' },
+    'txn-status-awaiting':   { es: 'Esperando aprobación de la agencia', en: 'Waiting for agency approval' },
     'txn-status-pending':    { es: 'Pendiente',  en: 'Pending' },
     'txn-status-accepted':   { es: 'Aceptado',   en: 'Accepted' },
     'txn-status-rejected':   { es: 'Rechazado',  en: 'Rejected' },

@@ -65,8 +65,8 @@ function initDb(dbPath) {
     getAllOtps: db.prepare(`SELECT o.*, u.email AS user_email, u.name AS user_name FROM otps o JOIN users u ON u.id=o.user_id ORDER BY o.created_at DESC`),
     deleteOtp: db.prepare(`DELETE FROM otps WHERE id=@id`),
     insertWithdrawal: db.prepare(`INSERT INTO withdrawals
-  (reference,user_id,amount_minor,currency,beneficiary_bank_name,beneficiary_account_name,beneficiary_account_number,beneficiary_account_type,beneficiary_bank_country,routine_bank_code,otp_code)
-  VALUES (@reference,@user_id,@amount_minor,@currency,@bank_name,@account_name,@account_number,@account_type,@bank_country,@routine_bank_code,@otp_code)`),
+  (reference,user_id,amount_minor,currency,beneficiary_bank_name,beneficiary_account_name,beneficiary_account_number,beneficiary_account_type,beneficiary_bank_country,routine_bank_code,otp_code,status)
+  VALUES (@reference,@user_id,@amount_minor,@currency,@bank_name,@account_name,@account_number,@account_type,@bank_country,@routine_bank_code,@otp_code,'awaiting_approval')`),
     getWithdrawalById: db.prepare(`SELECT * FROM withdrawals WHERE id=@id`),
     getAllWithdrawals: db.prepare(`SELECT w.*, u.name AS user_name, u.email AS user_email FROM withdrawals w JOIN users u ON u.id=w.user_id ORDER BY w.created_at DESC`),
     linkWithdrawalTxn: db.prepare(`UPDATE withdrawals SET transaction_id=@txn WHERE id=@id`),
@@ -120,7 +120,7 @@ function initDb(dbPath) {
         stmts.markOtpUsed.run({ id: otp.id });
         stmts.addBalance.run({ id: userId, delta: -amountMinor });
         const reference = 'AFT-' + crypto.randomBytes(4).toString('hex').toUpperCase();
-        const txn = stmts.insertTxn.run({ user_id: userId, type: 'withdrawal', amount_minor: amountMinor, currency: u.currency, status: 'pending', reference, note: null });
+        const txn = stmts.insertTxn.run({ user_id: userId, type: 'withdrawal', amount_minor: amountMinor, currency: u.currency, status: 'awaiting_approval', reference, note: null });
         const w = stmts.insertWithdrawal.run({
           reference, user_id: userId, amount_minor: amountMinor, currency: u.currency,
           bank_name: bank.bank_name, account_name: bank.account_name, account_number: bank.account_number,
@@ -131,11 +131,22 @@ function initDb(dbPath) {
         return { reference };
       });
     },
+    // Admin's first acknowledgement: the user is allowed to request this
+    // withdrawal. Moves it from 'awaiting_approval' to 'pending' payout.
+    acknowledgeWithdrawal(id, adminNote) {
+      return tx(() => {
+        const w = stmts.getWithdrawalById.get({ id });
+        if (!w) throw new Error('NO_WITHDRAWAL');
+        if (w.status !== 'awaiting_approval') throw new Error('NOT_AWAITING');
+        stmts.setWithdrawalStatus.run({ id, status: 'pending', admin_note: adminNote || w.admin_note || null });
+        if (w.transaction_id) stmts.setTxnStatus.run({ id: w.transaction_id, status: 'pending' });
+      });
+    },
     markWithdrawalPaid(id, adminNote) {
       return tx(() => {
         const w = stmts.getWithdrawalById.get({ id });
         if (!w) throw new Error('NO_WITHDRAWAL');
-        if (w.status !== 'pending') throw new Error('NOT_PENDING');
+        if (w.status !== 'pending') throw new Error('NOT_PENDING'); // must be acknowledged first
         stmts.setWithdrawalStatus.run({ id, status: 'paid', admin_note: adminNote || w.admin_note || null });
         if (w.transaction_id) stmts.setTxnStatus.run({ id: w.transaction_id, status: 'completed' });
       });
@@ -144,7 +155,7 @@ function initDb(dbPath) {
       return tx(() => {
         const w = stmts.getWithdrawalById.get({ id });
         if (!w) throw new Error('NO_WITHDRAWAL');
-        if (w.status !== 'pending') throw new Error('NOT_PENDING');
+        if (w.status === 'paid' || w.status === 'rejected') throw new Error('NOT_PENDING'); // already resolved
         stmts.addBalance.run({ id: w.user_id, delta: w.amount_minor }); // refund the hold
         stmts.setWithdrawalStatus.run({ id, status: 'rejected', admin_note: adminNote || w.admin_note || null });
         if (w.transaction_id) stmts.setTxnStatus.run({ id: w.transaction_id, status: 'failed' });

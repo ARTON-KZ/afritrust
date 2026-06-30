@@ -156,6 +156,7 @@
 /* Badges */
 .badge { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 700; padding: 4px 11px; border-radius: var(--r-full); letter-spacing: .01em; }
 .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge-waiting { background: #e7eef7; color: #3a5a8c; }
 .badge-pending { background: var(--gold-soft); color: #8a5a00; }
 .badge-paid { background: var(--mint-200); color: #1e5a12; }
 .badge-rejected { background: var(--error-soft); color: var(--error); }

@@ -7,7 +7,7 @@ function freshDb(){ const f=path.join(os.tmpdir(),`aftw-${Date.now()}-${Math.ran
 function seedUser(stmts, helpers, email, bal){ stmts.insertUser.run({name:'U',email,password:'h',currency:'NGN'}); const u=stmts.getUserByEmail.get({email}); if(bal) helpers.creditUser(u.id,bal,'seed'); return u; }
 const BANK = { bank_name:'GTB', account_name:'Ada', account_number:'0123456789' };
 
-test('valid OTP holds balance and creates pending withdrawal + txn', () => {
+test('valid OTP holds balance and creates awaiting-approval withdrawal + txn', () => {
   const { stmts, helpers, cleanup } = freshDb();
   const u = seedUser(stmts, helpers, 'a@x.co', 10000);
   const code = helpers.issueOtp(u.id, null);
@@ -15,10 +15,10 @@ test('valid OTP holds balance and creates pending withdrawal + txn', () => {
   assert.ok(reference);
   assert.equal(stmts.getUserById.get({ id: u.id }).balance_minor, 6000); // held
   const w = stmts.getAllWithdrawals.all().find(x => x.reference === reference);
-  assert.equal(w.status, 'pending');
+  assert.equal(w.status, 'awaiting_approval');
   assert.equal(w.amount_minor, 4000);
   const txns = stmts.getTxnsByUser.all({ user_id: u.id });
-  assert.ok(txns.find(t => t.type === 'withdrawal' && t.status === 'pending' && t.amount_minor === 4000));
+  assert.ok(txns.find(t => t.type === 'withdrawal' && t.status === 'awaiting_approval' && t.amount_minor === 4000));
   cleanup();
 });
 test('OTP is single-use', () => {
@@ -53,5 +53,29 @@ test('reject refunds the held balance', () => {
   const w = stmts.getAllWithdrawals.all().find(x => x.reference === reference);
   helpers.rejectWithdrawal(w.id, 'bad details');
   assert.equal(stmts.getUserById.get({ id: u.id }).balance_minor, 10000); // refunded
+  cleanup();
+});
+test('acknowledge moves awaiting_approval -> pending (withdrawal + txn)', () => {
+  const { stmts, helpers, cleanup } = freshDb();
+  const u = seedUser(stmts, helpers, 'ack@x.co', 10000);
+  const code = helpers.issueOtp(u.id, null);
+  const { reference } = helpers.createWithdrawal(u.id, { amountMinor: 3000, otpCode: code, bank: BANK });
+  const w = stmts.getAllWithdrawals.all().find(x => x.reference === reference);
+  helpers.acknowledgeWithdrawal(w.id, null);
+  assert.equal(stmts.getWithdrawalById.get({ id: w.id }).status, 'pending');
+  assert.equal(stmts.getTxnsByUser.all({ user_id: u.id }).find(t => t.type === 'withdrawal').status, 'pending');
+  cleanup();
+});
+test('markWithdrawalPaid requires acknowledgement first', () => {
+  const { stmts, helpers, cleanup } = freshDb();
+  const u = seedUser(stmts, helpers, 'paid@x.co', 10000);
+  const code = helpers.issueOtp(u.id, null);
+  const { reference } = helpers.createWithdrawal(u.id, { amountMinor: 3000, otpCode: code, bank: BANK });
+  const w = stmts.getAllWithdrawals.all().find(x => x.reference === reference);
+  assert.throws(() => helpers.markWithdrawalPaid(w.id, null), /NOT_PENDING/); // still awaiting
+  helpers.acknowledgeWithdrawal(w.id, null);
+  helpers.markWithdrawalPaid(w.id, null);
+  assert.equal(stmts.getWithdrawalById.get({ id: w.id }).status, 'paid');
+  assert.equal(stmts.getTxnsByUser.all({ user_id: u.id }).find(t => t.type === 'withdrawal').status, 'completed');
   cleanup();
 });

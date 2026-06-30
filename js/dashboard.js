@@ -32,6 +32,7 @@
   function statusInfo(tx) {
     const s = (tx.status || '').toLowerCase();
     const type = (tx.type || '').toLowerCase();
+    if (s === 'awaiting_approval') return { cls: 'badge-waiting', label: t('txn-status-awaiting', 'Waiting for agency approval') };
     if (s === 'pending') return { cls: 'badge-pending', label: t('txn-status-pending', 'Pending') };
     if (type === 'withdrawal') {
       if (['completed', 'accepted', 'paid'].includes(s)) return { cls: 'badge-paid', label: t('txn-status-accepted', 'Accepted') };

@@ -56,10 +56,11 @@
 
   // Status badge HTML  (uses escaped text so safe for all strings)
   function badge(s) {
-    const cls = s === 'pending' ? 'badge-pending'
+    const cls = s === 'awaiting_approval' ? 'badge-waiting'
+              : s === 'pending' ? 'badge-pending'
               : (s === 'paid' || s === 'active' || s === 'completed' || s === 'credit') ? 'badge-paid'
               : 'badge-rejected';
-    const label = AT.escapeHtml(String(s).charAt(0).toUpperCase() + String(s).slice(1));
+    const label = AT.escapeHtml(s === 'awaiting_approval' ? 'Awaiting approval' : (String(s).charAt(0).toUpperCase() + String(s).slice(1)));
     return `<span class="badge ${cls}">${label}</span>`;
   }
 
@@ -305,7 +306,11 @@
           <td class="mono">${AT.escapeHtml(w.beneficiary_account_number || '—')}</td>
           <td class="mono" style="font-size:.82rem">${AT.escapeHtml(w.reference || w.id || '—')}</td>
           <td>${badge(w.status)}</td>
-          <td>${w.status === 'pending' ? `
+          <td>${w.status === 'awaiting_approval' ? `
+            <div class="table-actions">
+              <button class="btn btn-primary btn-sm" data-ack="${w.id}">Approve</button>
+              <button class="btn btn-ghost btn-sm"   data-reject="${w.id}">Reject</button>
+            </div>` : w.status === 'pending' ? `
             <div class="table-actions">
               <button class="btn btn-primary btn-sm" data-paid="${w.id}">Mark paid</button>
               <button class="btn btn-ghost btn-sm"   data-reject="${w.id}">Reject</button>
@@ -321,10 +326,15 @@
   $('refreshWithdrawals').addEventListener('click', loadWithdrawals);
 
   $('withdrawalsTableBody').addEventListener('click', async (e) => {
+    const ack    = e.target.closest('[data-ack]');
     const paid   = e.target.closest('[data-paid]');
     const reject = e.target.closest('[data-reject]');
     try {
-      if (paid) {
+      if (ack) {
+        if (!confirm('Approve this request? The user is allowed to withdraw — it moves to pending payout.')) return;
+        await adminApi(`/api/admin/withdrawals/${ack.dataset.ack}/acknowledge`, { method: 'POST', body: {} });
+        AT.toast('Approved — now pending payout.', 'success');
+      } else if (paid) {
         if (!confirm('Mark this withdrawal as paid?')) return;
         await adminApi(`/api/admin/withdrawals/${paid.dataset.paid}/paid`, { method: 'POST', body: {} });
         AT.toast('Marked as paid.', 'success');

@@ -57,16 +57,19 @@ function resolve(kind) {
     const id = parseInt(req.params.id, 10);
     if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ error: 'Invalid id.' });
     try {
-      if (kind === 'paid') helpers.markWithdrawalPaid(id, req.body?.admin_note);
+      if (kind === 'acknowledge') helpers.acknowledgeWithdrawal(id, req.body?.admin_note);
+      else if (kind === 'paid') helpers.markWithdrawalPaid(id, req.body?.admin_note);
       else helpers.rejectWithdrawal(id, req.body?.admin_note);
     } catch (e) {
       if (e.message === 'NO_WITHDRAWAL') return res.status(404).json({ error: 'Request not found.' });
+      if (e.message === 'NOT_AWAITING') return res.status(409).json({ error: 'Request is no longer awaiting approval.' });
       if (e.message === 'NOT_PENDING') return res.status(409).json({ error: 'Request is already resolved.' });
       throw e;
     }
     res.json({ ok: true });
   };
 }
+router.post('/withdrawals/:id/acknowledge', resolve('acknowledge'));
 router.post('/withdrawals/:id/paid', resolve('paid'));
 router.post('/withdrawals/:id/reject', resolve('reject'));
 
