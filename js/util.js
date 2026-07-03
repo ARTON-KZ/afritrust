@@ -19,7 +19,7 @@ window.AT = (function () {
 
   function fmtMoney(amount, currency = 'USD') {
     const n = Number(amount) || 0;
-    const symbols = { NGN: '₦', USD: '$', GHS: 'GH₵', KES: 'KSh', ZAR: 'R', GBP: '£', EUR: '€', MXN: 'MX$' };
+    const symbols = { MXN: '$', ARS: '$', CLP: '$', COP: '$', PEN: 'S/ ', BOB: 'Bs ', PYG: '₲', VES: 'Bs ', USD: 'US$', EUR: '€', GBP: '£' };
     const sym = symbols[currency] || (currency + ' ');
     return sym + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
@@ -65,17 +65,13 @@ window.AT = (function () {
     { value: 'Bolivia',         es: 'Bolivia',              en: 'Bolivia' },
     { value: 'Paraguay',        es: 'Paraguay',             en: 'Paraguay' },
     { value: 'Venezuela',       es: 'Venezuela',            en: 'Venezuela' },
-    { value: 'Nigeria',         es: 'Nigeria',              en: 'Nigeria' },
-    { value: 'Ghana',           es: 'Ghana',                en: 'Ghana' },
-    { value: 'Kenya',           es: 'Kenia',                en: 'Kenya' },
-    { value: 'South Africa',    es: 'Sudáfrica',            en: 'South Africa' },
-    { value: 'Cameroon',        es: 'Camerún',              en: 'Cameroon' },
-    { value: 'Uganda',          es: 'Uganda',               en: 'Uganda' },
-    { value: 'Tanzania',        es: 'Tanzania',             en: 'Tanzania' },
-    { value: "Côte d'Ivoire",   es: "Costa de Marfil",     en: "Côte d'Ivoire" },
-    { value: 'Senegal',         es: 'Senegal',              en: 'Senegal' },
-    { value: 'Egypt',           es: 'Egipto',               en: 'Egypt' },
-    { value: 'United Kingdom',  es: 'Reino Unido',          en: 'United Kingdom' },
+    { value: 'Uruguay',         es: 'Uruguay',              en: 'Uruguay' },
+    { value: 'Guatemala',       es: 'Guatemala',            en: 'Guatemala' },
+    { value: 'Costa Rica',      es: 'Costa Rica',           en: 'Costa Rica' },
+    { value: 'Panama',          es: 'Panamá',               en: 'Panama' },
+    { value: 'Dominican Rep.',  es: 'Rep. Dominicana',      en: 'Dominican Rep.' },
+    { value: 'El Salvador',     es: 'El Salvador',          en: 'El Salvador' },
+    { value: 'Honduras',        es: 'Honduras',             en: 'Honduras' },
     { value: 'United States',   es: 'Estados Unidos',       en: 'United States' },
     { value: 'Other',           es: 'Otro',                 en: 'Other' },
   ];

@@ -1,0 +1,20 @@
+{
+  "name": "AfriTrust — Pagos a tu banco",
+  "short_name": "AfriTrust",
+  "description": "Recibe tu pago directo a tu cuenta bancaria, con la confianza de un código de tu administrador.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "dir": "ltr",
+  "background_color": "#f4f2e9",
+  "theme_color": "#f4f2e9",
+  "categories": ["finance"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

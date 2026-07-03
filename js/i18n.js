@@ -122,7 +122,7 @@
     'wd-number-label':       { es: 'Número de cuenta',          en: 'Account number' },
     'wd-number-ph':          { es: 'Número de cuenta',          en: 'Account number' },
     'wd-bank-label':         { es: 'Banco',                     en: 'Bank' },
-    'wd-bank-ph':            { es: 'ej. Guaranty Trust Bank',   en: 'e.g. Guaranty Trust Bank' },
+    'wd-bank-ph':            { es: 'ej. BBVA, Banorte, Santander',   en: 'e.g. BBVA, Banorte, Santander' },
     'wd-amount-label':       { es: 'Monto',                     en: 'Amount' },
     'wd-amount-ph':          { es: 'ej. 50000',                 en: 'e.g. 50000' },
     'wd-code-label':         { es: 'Código de confirmación',    en: 'Confirmation code' },

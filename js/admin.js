@@ -35,7 +35,7 @@
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
-  // Format integer minor-unit amounts (e.g. 249000 → ₦2,490.00)
+  // Format integer minor-unit amounts (e.g. 249000 → $2,490.00)
   function fmtMinor(amountMinor, currency) {
     const cur = currency || 'NGN';
     const val = (Number(amountMinor) || 0) / 100;
