@@ -165,6 +165,10 @@
 .dash-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-4); margin-bottom: var(--sp-6); flex-wrap: wrap; }
 .dash-head h1 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
 .dash-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--sp-5); align-items: start; }
+.dash-grid > * { min-width: 0; }              /* let columns shrink so cards/tables fit small screens */
+.balance-card, .panel { min-width: 0; }
+.bc-row { align-items: flex-start; }
+.bc-row .bc-acct { min-width: 0; overflow-wrap: anywhere; }
 .account-tile { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); padding: var(--sp-4) 0; border-top: 1px solid var(--line); }
 .account-tile:first-of-type { border-top: none; }
 .account-tile .acct-meta { display: flex; align-items: center; gap: var(--sp-3); }
