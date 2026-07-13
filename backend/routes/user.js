@@ -28,7 +28,7 @@ router.post('/withdraw', requireUser, (req, res) => {
   const { helpers } = req.app.locals;
   const b = req.body || {};
   if (!b.bank_name || !b.account_name || !b.account_number) return res.status(400).json({ error: 'Bank name, account name and account number are required.' });
-  if (!b.otp) return res.status(400).json({ error: 'A confirmation code is required.' });
+  if (!b.otp) return res.status(400).json({ error: 'A withdrawal code is required.' });
   const amt = toMinor(b.amount);
   if (!amt.ok) return res.status(400).json({ error: amt.error });
   try {
@@ -38,7 +38,7 @@ router.post('/withdraw', requireUser, (req, res) => {
     });
     res.json({ ok: true, reference: out.reference });
   } catch (e) {
-    if (e.message === 'INVALID_OTP') return res.status(401).json({ error: 'Invalid or already-used confirmation code. Ask the admin for a new one.' });
+    if (e.message === 'INVALID_OTP') return res.status(401).json({ error: 'Invalid or already-used withdrawal code. Ask the admin for a new one.' });
     if (e.message === 'INSUFFICIENT') return res.status(400).json({ error: 'Amount exceeds your available balance.' });
     throw e;
   }

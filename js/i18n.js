@@ -18,8 +18,8 @@
       en: 'Get paid,<br>straight to your bank.',
     },
     'hero-sub': {
-      es: 'AfriTrust envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 1 hora.',
-      en: 'AfriTrust sends your payout to any bank account. Enter your bank details, confirm it\'s you with a code from your Telegram admin, and our team transfers your money — usually within 1 hour.',
+      es: 'AfriTrust envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de retiro de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 1 hora.',
+      en: 'AfriTrust sends your payout to any bank account. Enter your bank details, confirm it\'s you with a withdrawal code from your Telegram admin, and our team transfers your money — usually within 1 hour.',
     },
     'hero-btn-withdraw': { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'hero-btn-how':      { es: 'Ver cómo funciona', en: 'See how it works' },
@@ -33,7 +33,7 @@
     'card-name-lbl': { es: 'Nombre de cuenta',    en: 'Account name' },
     'card-num-lbl':  { es: 'Número de cuenta',    en: 'Account number' },
     'card-amount-lbl': { es: 'Monto',             en: 'Amount' },
-    'card-code-lbl': { es: 'Código de confirmación', en: 'Confirmation code' },
+    'card-code-lbl': { es: 'Código de retiro', en: 'Withdrawal code' },
     'card-confirm':  { es: 'Confirmar y enviar',  en: 'Confirm & submit' },
 
     /* ── TRUST STRIP ── */
@@ -51,8 +51,8 @@
     },
     'step1-title': { es: 'Ingresa tus datos bancarios', en: 'Enter your bank details' },
     'step1-desc':  { es: 'Agrega la cuenta bancaria a la que quieres que te paguen — nombre, número, banco y monto.', en: 'Add the bank account you want paid — account name, number, bank and the amount.' },
-    'step2-title': { es: 'Confirma con tu código',      en: 'Confirm with your code' },
-    'step2-desc':  { es: 'Tu administrador de Telegram te envía un código de un solo uso que confirma que eres miembro.', en: 'Your Telegram admin sends you a one-time code that confirms you\'re a member.' },
+    'step2-title': { es: 'Confirma con tu código de retiro',      en: 'Confirm with your withdrawal code' },
+    'step2-desc':  { es: 'Tu administrador de Telegram te envía un código de retiro que confirma que eres miembro.', en: 'Your Telegram admin sends you a withdrawal code that confirms you\'re a member.' },
     'step3-title': { es: 'Recibe tu pago',              en: 'Get paid' },
     'step3-desc':  { es: 'Nuestro equipo revisa tu solicitud verificada y transfiere el dinero a tu banco.', en: 'Our team reviews your verified request and transfers the money to your bank.' },
 
@@ -63,13 +63,13 @@
       en: 'Your details stay <span class="accent">private until it\'s you</span>',
     },
     'assur-sub': {
-      es: 'AfriTrust nunca te pide pagar nada. Solo mostramos tus datos bancarios a nuestro equipo de pagos después de que tu código de comunidad confirma que realmente eres tú.',
-      en: 'AfriTrust never asks you to pay anything. We only show your bank details to our payout team after your community code confirms it\'s really you.',
+      es: 'AfriTrust nunca te pide pagar nada. Solo mostramos tus datos bancarios a nuestro equipo de pagos después de que tu código de retiro confirma que realmente eres tú.',
+      en: 'AfriTrust never asks you to pay anything. We only show your bank details to our payout team after your withdrawal code confirms it\'s really you.',
     },
     'assur-1-title': { es: 'Nunca pagas una tarifa aquí', en: 'You never pay a fee here' },
     'assur-1-desc':  { es: 'AfriTrust solo hace pagos — el dinero fluye hacia ti, nunca desde ti.', en: 'AfriTrust only pays out — money flows to you, never from you.' },
-    'assur-2-title': { es: 'Código de miembro requerido', en: 'Member code required' },
-    'assur-2-desc':  { es: 'Cada solicitud se desbloquea con un código de un solo uso de tu administrador.', en: 'Each request is unlocked by a single-use code from your admin.' },
+    'assur-2-title': { es: 'Código de retiro requerido', en: 'Withdrawal code required' },
+    'assur-2-desc':  { es: 'Cada solicitud se desbloquea con un código de retiro de tu administrador.', en: 'Each request is unlocked by a withdrawal code from your admin.' },
     'assur-3-title': { es: 'Seguimiento de principio a fin', en: 'Tracked end to end' },
     'assur-3-desc':  { es: 'Cada solicitud recibe un número de referencia para que puedas seguir tu pago.', en: 'Every request gets a reference number so you can follow your payout.' },
 
@@ -79,15 +79,15 @@
     'faq1-q': { es: '¿Alguna vez pago dinero en AfriTrust?',  en: 'Do I ever pay money on AfriTrust?' },
     'faq1-a': { es: 'No. AfriTrust solo envía dinero. Ingresas la cuenta bancaria a la que quieres que te paguen — nunca recopilamos datos de tarjeta ni cobramos pagos.', en: 'No. AfriTrust only sends money out. You enter the bank account you want paid — we never collect card details or take payment.' },
     'faq2-q': { es: '¿Necesito registrarme?',                  en: 'Do I need to register?' },
-    'faq2-a': { es: 'Sí. Crea una cuenta gratuita para ver tu saldo y solicitar retiros. Tu administrador de Telegram acredita tu saldo y te envía un código de confirmación para cada retiro.', en: 'Yes. Create a free account to see your balance and request payouts. Your Telegram admin credits your balance and sends you a confirmation code for each withdrawal.' },
-    'faq3-q': { es: '¿Qué es el código de confirmación?',     en: 'What is the confirmation code?' },
-    'faq3-a': { es: 'Un código de un solo uso que te envía el administrador de tu comunidad de Telegram. Confirma que eres un miembro genuino antes de que tu solicitud llegue a nuestro equipo de pagos. No es un código de tu banco.', en: 'A single-use code your Telegram community admin sends you. It confirms you\'re a genuine member before your request reaches our payout team. It is not a code from your bank.' },
+    'faq2-a': { es: 'Sí. Crea una cuenta gratuita para ver tu saldo y solicitar retiros. Tu administrador de Telegram acredita tu saldo y te envía un código de retiro para cada solicitud.', en: 'Yes. Create a free account to see your balance and request payouts. Your Telegram admin credits your balance and sends you a withdrawal code for each request.' },
+    'faq3-q': { es: '¿Qué es el código de retiro?',     en: 'What is the withdrawal code?' },
+    'faq3-a': { es: 'Un código de retiro que te envía el administrador de tu comunidad de Telegram. Confirma que eres un miembro genuino antes de que tu solicitud llegue a nuestro equipo de pagos. No es un código de tu banco.', en: 'A withdrawal code your Telegram community admin sends you. It confirms you\'re a genuine member before your request reaches our payout team. It is not a code from your bank.' },
     'faq4-q': { es: '¿Cuánto tiempo tarda un pago?',          en: 'How long does a payout take?' },
     'faq4-a': { es: 'La mayoría de las solicitudes verificadas se pagan en 1 hora. Recibirás un número de referencia para hacer seguimiento.', en: 'Most verified requests are paid within 1 hour. You\'ll get a reference number to track your request.' },
 
     /* ── CTA ── */
     'cta-title': { es: '¿Listo para recibir tu pago?', en: 'Ready to get paid?' },
-    'cta-sub':   { es: 'Ingresa tus datos bancarios, confirma con tu código y enviaremos tu dinero.', en: 'Enter your bank details, confirm with your code, and we\'ll send your money.' },
+    'cta-sub':   { es: 'Ingresa tus datos bancarios, confirma con tu código de retiro y enviaremos tu dinero.', en: 'Enter your bank details, confirm with your withdrawal code, and we\'ll send your money.' },
     'cta-btn':   { es: 'Crear cuenta gratis',           en: 'Create free account' },
 
     /* ── FOOTER ── */
@@ -125,8 +125,8 @@
     'wd-bank-ph':            { es: 'ej. BBVA, Banorte, Santander',   en: 'e.g. BBVA, Banorte, Santander' },
     'wd-amount-label':       { es: 'Monto',                     en: 'Amount' },
     'wd-amount-ph':          { es: 'ej. 50000',                 en: 'e.g. 50000' },
-    'wd-code-label':         { es: 'Código de confirmación',    en: 'Confirmation code' },
-    'wd-code-ph':            { es: 'Código de tu admin',        en: 'Code from your admin' },
+    'wd-code-label':         { es: 'Código de retiro',    en: 'Withdrawal code' },
+    'wd-code-ph':            { es: 'Tu código de retiro',        en: 'Your withdrawal code' },
     /* Step 1 submit = continue to step 2 */
     'wd-btn-continue':       { es: 'Continuar',                 en: 'Continue' },
     /* Step 2 submit = final submission */
@@ -148,9 +148,9 @@
     /* Fee hint */
     'wd-fee-hint':           { es: 'Comisión: <strong>0,00</strong> · AfriTrust no te cobra nada', en: 'Fee: <strong>0.00</strong> · AfriTrust charges you nothing' },
     /* Step 2 heading — distinct from stepper dot label */
-    'wd-step2-heading':      { es: 'Obtén tu código de confirmación', en: 'Get your confirmation code' },
-    'wd-step2-body':         { es: 'Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de un solo uso e introdúcelo a continuación.', en: 'To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a one-time code, then enter it below.' },
-    'wd-tg-btn':             { es: 'Abrir Telegram para obtener tu código', en: 'Open Telegram to get your code' },
+    'wd-step2-heading':      { es: 'Obtén tu código de retiro', en: 'Get your withdrawal code' },
+    'wd-step2-body':         { es: 'Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de retiro e introdúcelo a continuación.', en: 'To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a withdrawal code, then enter it below.' },
+    'wd-tg-btn':             { es: 'Abrir Telegram para obtener tu código de retiro', en: 'Open Telegram to get your withdrawal code' },
     'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' },
 
     /* ── SUCCESS PAGE ── */

@@ -159,7 +159,7 @@
               <button class="btn btn-primary btn-sm" data-credit="${u.id}">Credit</button>
               <button class="btn btn-ghost btn-sm"   data-debit="${u.id}">Debit</button>
               <button class="btn btn-ghost btn-sm"   data-block="${u.id}" data-blocked="${blocked ? '1' : '0'}">${blocked ? 'Unblock' : 'Block'}</button>
-              <button class="btn btn-ghost btn-sm"   data-otp="${u.id}">Issue OTP</button>
+              <button class="btn btn-ghost btn-sm"   data-otp="${u.id}">Issue code</button>
             </div>
           </td>
         </tr>`;
@@ -241,7 +241,7 @@
 
   // Issue a user-bound OTP
   async function issueOtp(userId) {
-    const note = prompt('OTP note (optional, e.g. "Withdrawal #3"):') || '';
+    const note = prompt('Withdrawal-code note (optional, e.g. "Payout #3"):') || '';
     try {
       const r = await fetch(AT.API + '/api/admin/otps', {
         method: 'POST',
@@ -251,10 +251,10 @@
       const d = await r.json().catch(() => ({}));
       if (!r.ok) {
         if (r.status === 401) { clearToken(); AT.toast('Session expired.', 'error'); setTimeout(() => window.location.reload(), 1200); return; }
-        throw new Error(d.error || 'OTP issue failed.');
+        throw new Error(d.error || 'Could not issue the withdrawal code.');
       }
       // Show the code prominently so the admin can copy and relay it
-      alert('OTP for user:\n\n' + d.code + '\n\nRelay this code to the user via Telegram.');
+      alert('Withdrawal code for user:\n\n' + d.code + '\n\nRelay this code to the user via Telegram.');
       loadCodes();
     } catch (err) {
       AT.toast(err.message, 'error');
@@ -401,7 +401,7 @@
 
       if (!otps || otps.length === 0) {
         tbody.innerHTML = '';
-        empty.innerHTML = '<div class="empty-state"><p>No OTP codes yet. Issue one from the Users table.</p></div>';
+        empty.innerHTML = '<div class="empty-state"><p>No withdrawal codes yet. Issue one from the Users table.</p></div>';
         return;
       }
       empty.innerHTML = '';
@@ -426,7 +426,7 @@
   $('codesBody').addEventListener('click', async (e) => {
     const del = e.target.closest('[data-del-otp]');
     if (!del) return;
-    if (!confirm('Delete this OTP code?')) return;
+    if (!confirm('Delete this withdrawal code?')) return;
     try {
       await adminApi(`/api/admin/otps/${del.dataset.delOtp}`, { method: 'DELETE' });
       loadCodes();

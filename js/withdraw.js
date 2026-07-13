@@ -113,7 +113,7 @@
     e.preventDefault();
     clearError();
     const otp = $('otp').value.trim();
-    if (!otp) { showError('Enter the confirmation code from your Telegram admin.'); return; }
+    if (!otp) { showError('Enter the withdrawal code from your Telegram admin.'); return; }
 
     const btn = $('submitBtn');
     btn.disabled = true; btn.textContent = 'Submitting…';
