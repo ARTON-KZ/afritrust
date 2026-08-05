@@ -21,6 +21,12 @@ test('toMinor parses and rounds to cents', () => {
   assert.equal(m.toMinor(-5).ok, false);
   assert.equal(m.toMinor(0).ok, false);
 });
+test('toMinor tolerates thousands separators and spaces', () => {
+  assert.deepEqual(m.toMinor('1,500'), { ok: true, minor: 150000 });
+  assert.deepEqual(m.toMinor('10,000'), { ok: true, minor: 1000000 });
+  assert.deepEqual(m.toMinor('1,500.50'), { ok: true, minor: 150050 });
+  assert.deepEqual(m.toMinor('1 500'), { ok: true, minor: 150000 });
+});
 test('toMinor rejects sub-cent amounts that round to zero', () => {
   assert.equal(m.toMinor('0.001').ok, false);
   assert.equal(m.toMinor('0.004').ok, false);

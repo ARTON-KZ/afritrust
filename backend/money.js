@@ -8,7 +8,9 @@ const ALLOWED_CURRENCIES = [
 const isAllowedCurrency = (c) => ALLOWED_CURRENCIES.includes(String(c || '').toUpperCase());
 
 function toMinor(major) {
-  const n = Number(major);
+  // Tolerate thousands separators / stray spaces (e.g. "1,500") — the UI
+  // formats money US/Mexican-style, so a comma means thousands, not decimals.
+  const n = Number(String(major == null ? '' : major).replace(/[,\s]/g, ''));
   if (!Number.isFinite(n) || n <= 0) return { ok: false, error: 'Enter a valid amount.' };
   const minor = Math.round(n * 100);
   if (minor <= 0) return { ok: false, error: 'Enter a valid amount.' };

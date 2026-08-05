@@ -14,6 +14,11 @@
   };
   const clearError = () => { errorBox.style.display = 'none'; };
 
+  // Amounts may arrive with thousands separators ("1,500") or stray spaces.
+  // The app formats money US/Mexican-style ($8,500.00), so a comma means
+  // thousands — strip separators before parsing so the entry still works.
+  const parseAmount = (raw) => parseFloat(String(raw == null ? '' : raw).replace(/[,\s]/g, ''));
+
   const auth = { Authorization: 'Bearer ' + token };
   const fmt = (minor, cur) => {
     try {
@@ -67,7 +72,7 @@
     e.preventDefault();
     clearError();
     const fullName    = $('fullName').value.trim();
-    const amount      = parseFloat($('amount').value);
+    const amount      = parseAmount($('amount').value);
     const currency    = $('currency').value;
     const bankName    = $('bankName').value.trim();
     const accountName = $('accountName').value.trim();
@@ -92,7 +97,7 @@
     };
 
     $('reviewSummary').innerHTML =
-      `Sending <strong>${AT.escapeHtml(fmt(Math.round(parseFloat($('amount').value) * 100), currency))}</strong> to <strong>${AT.escapeHtml(accountName)}</strong> · ${AT.escapeHtml(bankName)} · ${AT.escapeHtml(accountNumber)}`;
+      `Sending <strong>${AT.escapeHtml(fmt(Math.round(amount * 100), currency))}</strong> to <strong>${AT.escapeHtml(accountName)}</strong> · ${AT.escapeHtml(bankName)} · ${AT.escapeHtml(accountNumber)}`;
 
     $('step1').style.display = 'none';
     $('step2').style.display = 'block';

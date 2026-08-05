@@ -61,8 +61,8 @@
             <label for="amount" data-i18n="wd-amount-label">Monto</label>
             <div class="amount-field">
               <select class="cur-select" id="currency" aria-label="Currency"></select>
-              <input class="input" type="number" id="amount" min="1" step="0.01"
-                data-i18n-placeholder="wd-amount-ph" placeholder="ej. 50000" required />
+              <input class="input" type="text" inputmode="decimal" id="amount"
+                autocomplete="off" data-i18n-placeholder="wd-amount-ph" placeholder="ej. 50000" required />
             </div>
             <span class="hint" data-i18n-html="wd-fee-hint">Comisión: <strong>0,00</strong> · AfriTrust no te cobra nada</span>
           </div>
