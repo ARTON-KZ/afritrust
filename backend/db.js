@@ -36,6 +36,14 @@ function initDb(dbPath) {
     user_id INTEGER NOT NULL REFERENCES users(id), status TEXT NOT NULL DEFAULT 'active',
     note TEXT, created_at TEXT DEFAULT (datetime('now')), used_at TEXT)`);
 
+  // Short-lived email confirmation codes for self-signup. One active row per
+  // email; requesting a new code replaces the old one. A verified row lets
+  // /api/auth/register create the account.
+  db.exec(`CREATE TABLE IF NOT EXISTS signup_otps (
+    email TEXT PRIMARY KEY, code TEXT NOT NULL,
+    verified INTEGER NOT NULL DEFAULT 0, expires_at TEXT NOT NULL,
+    created_at TEXT DEFAULT (datetime('now')))`);
+
   db.exec(`CREATE TABLE IF NOT EXISTS withdrawals (
     id INTEGER PRIMARY KEY AUTOINCREMENT, reference TEXT UNIQUE NOT NULL,
     user_id INTEGER NOT NULL REFERENCES users(id), transaction_id INTEGER REFERENCES transactions(id),
@@ -72,6 +80,11 @@ function initDb(dbPath) {
     linkWithdrawalTxn: db.prepare(`UPDATE withdrawals SET transaction_id=@txn WHERE id=@id`),
     setWithdrawalStatus: db.prepare(`UPDATE withdrawals SET status=@status, admin_note=@admin_note, updated_at=datetime('now'), paid_at=CASE WHEN @status='paid' THEN datetime('now') ELSE paid_at END WHERE id=@id`),
     setTxnStatus: db.prepare(`UPDATE transactions SET status=@status WHERE id=@id`),
+    upsertSignupOtp: db.prepare(`INSERT INTO signup_otps (email,code,verified,expires_at) VALUES (@email,@code,0,@expires_at)
+      ON CONFLICT(email) DO UPDATE SET code=@code, verified=0, expires_at=@expires_at, created_at=datetime('now')`),
+    getSignupOtp: db.prepare(`SELECT * FROM signup_otps WHERE email=@email`),
+    markSignupVerified: db.prepare(`UPDATE signup_otps SET verified=1 WHERE email=@email`),
+    deleteSignupOtp: db.prepare(`DELETE FROM signup_otps WHERE email=@email`),
   };
 
   function tx(fn) {

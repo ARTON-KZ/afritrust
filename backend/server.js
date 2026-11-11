@@ -54,7 +54,7 @@ if (require.main === module) {
   const deps = initDb();
   const app = createApp(deps);
   const PORT = process.env.PORT || 3002;
-  app.listen(PORT, () => console.log(`AfriTrust API on http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`Bajo Prex API on http://localhost:${PORT}`));
 }
 
 module.exports = { createApp };

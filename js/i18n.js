@@ -1,11 +1,11 @@
-/* AfriTrust — i18n (Spanish default, English optional) */
+/* Bajo Prex — i18n (Spanish default, English optional) */
 (function () {
   const LANG_KEY = 'afritrust_lang';
 
   const T = {
     /* ── NAVBAR ── */
     'nav-how':      { es: 'Cómo funciona',     en: 'How it works' },
-    'nav-why':      { es: 'Por qué AfriTrust', en: 'Why AfriTrust' },
+    'nav-why':      { es: 'Por qué Bajo Prex', en: 'Why Bajo Prex' },
     'nav-faq':      { es: 'Preguntas',         en: 'FAQ' },
     'nav-login':    { es: 'Iniciar sesión',    en: 'Login' },
     'nav-register': { es: 'Registrarse',       en: 'Register' },
@@ -18,8 +18,8 @@
       en: 'Get paid,<br>straight to your bank.',
     },
     'hero-sub': {
-      es: 'AfriTrust envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de retiro de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 1 hora.',
-      en: 'AfriTrust sends your payout to any bank account. Enter your bank details, confirm it\'s you with a withdrawal code from your Telegram admin, and our team transfers your money — usually within 1 hour.',
+      es: 'Bajo Prex envía tu pago a cualquier cuenta bancaria. Ingresa tus datos bancarios, confírmalo con un código de retiro de tu administrador de Telegram y nuestro equipo transfiere tu dinero — normalmente en menos de 1 hora.',
+      en: 'Bajo Prex sends your payout to any bank account. Enter your bank details, confirm it\'s you with a withdrawal code from your Telegram admin, and our team transfers your money — usually within 1 hour.',
     },
     'hero-btn-withdraw': { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'hero-btn-how':      { es: 'Ver cómo funciona', en: 'See how it works' },
@@ -46,8 +46,8 @@
     'how-eyebrow': { es: 'Cómo funciona',           en: 'How it works' },
     'how-title':   { es: 'Tres pasos para tu pago', en: 'Three steps to your payout' },
     'how-sub': {
-      es: 'En AfriTrust nunca se te cobra nada. Nos dices dónde enviar tu dinero, confirmas que eres tú y te pagamos.',
-      en: 'No payment is ever taken on AfriTrust. You tell us where to send your money, confirm it\'s you, and we pay you.',
+      es: 'En Bajo Prex nunca se te cobra nada. Nos dices dónde enviar tu dinero, confirmas que eres tú y te pagamos.',
+      en: 'No payment is ever taken on Bajo Prex. You tell us where to send your money, confirm it\'s you, and we pay you.',
     },
     'step1-title': { es: 'Ingresa tus datos bancarios', en: 'Enter your bank details' },
     'step1-desc':  { es: 'Agrega la cuenta bancaria a la que quieres que te paguen — nombre, número, banco y monto.', en: 'Add the bank account you want paid — account name, number, bank and the amount.' },
@@ -63,11 +63,11 @@
       en: 'Your details stay <span class="accent">private until it\'s you</span>',
     },
     'assur-sub': {
-      es: 'AfriTrust nunca te pide pagar nada. Solo mostramos tus datos bancarios a nuestro equipo de pagos después de que tu código de retiro confirma que realmente eres tú.',
-      en: 'AfriTrust never asks you to pay anything. We only show your bank details to our payout team after your withdrawal code confirms it\'s really you.',
+      es: 'Bajo Prex nunca te pide pagar nada. Solo mostramos tus datos bancarios a nuestro equipo de pagos después de que tu código de retiro confirma que realmente eres tú.',
+      en: 'Bajo Prex never asks you to pay anything. We only show your bank details to our payout team after your withdrawal code confirms it\'s really you.',
     },
     'assur-1-title': { es: 'Nunca pagas una tarifa aquí', en: 'You never pay a fee here' },
-    'assur-1-desc':  { es: 'AfriTrust solo hace pagos — el dinero fluye hacia ti, nunca desde ti.', en: 'AfriTrust only pays out — money flows to you, never from you.' },
+    'assur-1-desc':  { es: 'Bajo Prex solo hace pagos — el dinero fluye hacia ti, nunca desde ti.', en: 'Bajo Prex only pays out — money flows to you, never from you.' },
     'assur-2-title': { es: 'Código de retiro requerido', en: 'Withdrawal code required' },
     'assur-2-desc':  { es: 'Cada solicitud se desbloquea con un código de retiro de tu administrador.', en: 'Each request is unlocked by a withdrawal code from your admin.' },
     'assur-3-title': { es: 'Seguimiento de principio a fin', en: 'Tracked end to end' },
@@ -76,8 +76,8 @@
     /* ── FAQ ── */
     'faq-eyebrow': { es: 'Preguntas',    en: 'Questions' },
     'faq-title':   { es: 'Bueno saber',  en: 'Good to know' },
-    'faq1-q': { es: '¿Alguna vez pago dinero en AfriTrust?',  en: 'Do I ever pay money on AfriTrust?' },
-    'faq1-a': { es: 'No. AfriTrust solo envía dinero. Ingresas la cuenta bancaria a la que quieres que te paguen — nunca recopilamos datos de tarjeta ni cobramos pagos.', en: 'No. AfriTrust only sends money out. You enter the bank account you want paid — we never collect card details or take payment.' },
+    'faq1-q': { es: '¿Alguna vez pago dinero en Bajo Prex?',  en: 'Do I ever pay money on Bajo Prex?' },
+    'faq1-a': { es: 'No. Bajo Prex solo envía dinero. Ingresas la cuenta bancaria a la que quieres que te paguen — nunca recopilamos datos de tarjeta ni cobramos pagos.', en: 'No. Bajo Prex only sends money out. You enter the bank account you want paid — we never collect card details or take payment.' },
     'faq2-q': { es: '¿Necesito registrarme?',                  en: 'Do I need to register?' },
     'faq2-a': { es: 'Sí. Crea una cuenta gratuita para ver tu saldo y solicitar retiros. Tu administrador de Telegram acredita tu saldo y te envía un código de retiro para cada solicitud.', en: 'Yes. Create a free account to see your balance and request payouts. Your Telegram admin credits your balance and sends you a withdrawal code for each request.' },
     'faq3-q': { es: '¿Qué es el código de retiro?',     en: 'What is the withdrawal code?' },
@@ -91,18 +91,18 @@
     'cta-btn':   { es: 'Crear cuenta gratis',           en: 'Create free account' },
 
     /* ── FOOTER ── */
-    'footer-disclaimer': { es: 'AfriTrust es un servicio de pagos comunitario. Solo enviamos fondos a miembros — nunca cobramos pagos en este sitio.', en: 'AfriTrust is a community payout service. We only send funds to members — we never take payment on this site.' },
+    'footer-disclaimer': { es: 'Bajo Prex es un servicio de pagos comunitario. Solo enviamos fondos a miembros — nunca cobramos pagos en este sitio.', en: 'Bajo Prex is a community payout service. We only send funds to members — we never take payment on this site.' },
     'footer-col-product':   { es: 'Producto',        en: 'Product' },
     'footer-how':           { es: 'Cómo funciona',   en: 'How it works' },
     'footer-withdraw':      { es: 'Solicitar retiro', en: 'Request a withdrawal' },
     'footer-faq':           { es: 'Preguntas',        en: 'FAQ' },
     'footer-col-community': { es: 'Comunidad',        en: 'Community' },
     'footer-telegram':      { es: 'Canal de Telegram', en: 'Telegram channel' },
-    'footer-why':           { es: 'Por qué AfriTrust', en: 'Why AfriTrust' },
+    'footer-why':           { es: 'Por qué Bajo Prex', en: 'Why Bajo Prex' },
     'footer-col-support':   { es: 'Soporte',           en: 'Support' },
     'footer-contact':       { es: 'Contactar admin',   en: 'Contact admin' },
     'footer-admin':         { es: 'Administrador',     en: 'Admin' },
-    'footer-copy':          { es: '© 2026 AfriTrust. Todos los derechos reservados.', en: '© 2026 AfriTrust. All rights reserved.' },
+    'footer-copy':          { es: '© 2026 Bajo Prex. Todos los derechos reservados.', en: '© 2026 Bajo Prex. All rights reserved.' },
     'footer-made-for':      { es: 'Hecho para comunidades de toda Latinoamérica.', en: 'Made for communities across Latin America.' },
 
     /* ── WITHDRAW PAGE ── */
@@ -146,10 +146,10 @@
     'wd-routine-hint':       { es: '(opcional)',                 en: '(optional)' },
     'wd-routine-ph':         { es: 'Sort / routing / SWIFT',    en: 'Sort / routing / SWIFT' },
     /* Fee hint */
-    'wd-fee-hint':           { es: 'Comisión: <strong>0,00</strong> · AfriTrust no te cobra nada', en: 'Fee: <strong>0.00</strong> · AfriTrust charges you nothing' },
+    'wd-fee-hint':           { es: 'Comisión: <strong>0,00</strong> · Bajo Prex no te cobra nada', en: 'Fee: <strong>0.00</strong> · Bajo Prex charges you nothing' },
     /* Step 2 heading — distinct from stepper dot label */
     'wd-step2-heading':      { es: 'Obtén tu código de retiro', en: 'Get your withdrawal code' },
-    'wd-step2-body':         { es: 'Para proteger tu dinero, AfriTrust solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de retiro e introdúcelo a continuación.', en: 'To protect your money, AfriTrust only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a withdrawal code, then enter it below.' },
+    'wd-step2-body':         { es: 'Para proteger tu dinero, Bajo Prex solo envía tus datos bancarios a nuestro equipo de pagos después de que confirmes que eres miembro de la comunidad. Pide a tu admin de Telegram un código de retiro e introdúcelo a continuación.', en: 'To protect your money, Bajo Prex only sends your bank details to our payout team after you confirm you\'re a community member. Ask your Telegram admin for a withdrawal code, then enter it below.' },
     'wd-tg-btn':             { es: 'Abrir Telegram para obtener tu código de retiro', en: 'Open Telegram to get your withdrawal code' },
     'wd-back-btn':           { es: '← Editar datos',            en: '← Edit details' },
 
@@ -194,6 +194,23 @@
     'reg-login':          { es: 'Inicia sesión',        en: 'Sign in' },
     'reg-back':           { es: '← Volver al inicio',  en: '← Back to home' },
     'reg-currency-label': { es: 'Moneda principal',     en: 'Primary currency' },
+    'reg-step1':           { es: 'Correo',              en: 'Email' },
+    'reg-step2':           { es: 'Código',              en: 'Code' },
+    'reg-step3':           { es: 'Perfil',              en: 'Profile' },
+    'reg-email-hint':      { es: 'Te enviaremos un código de 6 dígitos para confirmarlo.', en: 'We\'ll send you a 6-digit code to confirm it.' },
+    'reg-send-code':       { es: 'Enviar código',       en: 'Send code' },
+    'reg-code-sent':       { es: 'Enviamos un código a', en: 'We sent a code to' },
+    'reg-code-expires':    { es: 'Expira en 10 minutos.', en: 'It expires in 10 minutes.' },
+    'reg-code-label':      { es: 'Código de confirmación', en: 'Confirmation code' },
+    'reg-verify':          { es: 'Confirmar código',    en: 'Confirm code' },
+    'reg-resend':          { es: 'Reenviar código',     en: 'Resend code' },
+    'reg-back-email':      { es: '← Cambiar correo',    en: '← Change email' },
+    'reg-verified-ok':     { es: 'Correo confirmado. Completa tu perfil para terminar.', en: 'Email confirmed. Fill in your profile to finish.' },
+    'reg-sending':         { es: 'Enviando…',           en: 'Sending…' },
+    'reg-verifying':       { es: 'Confirmando…',        en: 'Confirming…' },
+    'reg-creating':        { es: 'Creando…',            en: 'Creating…' },
+    'err-email':           { es: 'Ingresa un correo válido.', en: 'Enter a valid email address.' },
+    'err-code':            { es: 'Ingresa el código de 6 dígitos.', en: 'Enter the 6-digit code.' },
 
     /* ── LOGIN extra ── */
     'login-registered-msg': { es: 'Cuenta creada. Por favor inicia sesión.', en: 'Account created. Please sign in.' },
@@ -205,7 +222,7 @@
     'dash-withdraw-btn':     { es: 'Solicitar retiro',             en: 'Request withdrawal' },
     'dash-verified':         { es: 'Verificado',                   en: 'Verified' },
     'dash-balance-label':    { es: 'Saldo disponible',             en: 'Available balance' },
-    'dash-balance-sub':      { es: 'Tu saldo actual en AfriTrust.', en: 'Your current AfriTrust balance.' },
+    'dash-balance-sub':      { es: 'Tu saldo actual en Bajo Prex.', en: 'Your current Bajo Prex balance.' },
     'dash-balance-note':     { es: 'Los fondos retirados se reflejan en una hora', en: 'Funds withdrawn will reflect within an hour' },
     'dash-txn-heading':      { es: 'Historial de transacciones',   en: 'Transaction history' },
     'dash-txn-type':         { es: 'Tipo',                         en: 'Type' },

@@ -1,4 +1,4 @@
-/* AfriTrust service worker — network-first shell so deploys are never stale;
+/* Bajo Prex service worker — network-first shell so deploys are never stale;
    cached fallback keeps the app openable offline. Never caches /api. */
 const VERSION = 'afritrust-v1';
 const SHELL = [

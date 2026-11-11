@@ -1,6 +1,6 @@
 {
-  "name": "AfriTrust — Pagos a tu banco",
-  "short_name": "AfriTrust",
+  "name": "Bajo Prex — Pagos a tu banco",
+  "short_name": "Bajo Prex",
   "description": "Recibe tu pago directo a tu cuenta bancaria, con la confianza de un código de tu administrador.",
   "start_url": "/",
   "scope": "/",

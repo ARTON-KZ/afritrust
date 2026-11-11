@@ -7,7 +7,7 @@ window.API_BASE = (window.location.hostname === 'localhost' || window.location.h
 
 window.AFRITRUST_TELEGRAM = 'https://t.me/ServiciosbancariosdeAfriTrust'; // admin Telegram (users get their OTP here)
 
-/* ---- Progressive Web App: make AfriTrust installable + offline-capable ----
+/* ---- Progressive Web App: make Bajo Prex installable + offline-capable ----
    Injected here so every page becomes app-ready without editing each <head>. */
 (function () {
   var head = document.head || document.getElementsByTagName('head')[0];
@@ -18,7 +18,7 @@ window.AFRITRUST_TELEGRAM = 'https://t.me/ServiciosbancariosdeAfriTrust'; // adm
   meta('mobile-web-app-capable', 'yes');
   meta('apple-mobile-web-app-capable', 'yes');
   meta('apple-mobile-web-app-status-bar-style', 'default');
-  meta('apple-mobile-web-app-title', 'AfriTrust');
+  meta('apple-mobile-web-app-title', 'Bajo Prex');
   link('apple-touch-icon', '/icon-192.png');
   link('icon', '/icon.svg', { type: 'image/svg+xml' });
   if ('serviceWorker' in navigator) {
